@@ -20,7 +20,7 @@
                         <img class="logo-img" src="{% static 'logo.svg' %}" alt="logo">
                     </a>
                     <a class="link__logo-name" href="">
-                        Садовый инструмент
+                        {% trans 'Садовый инструмент' %}
                     </a>
                 </div>
 
@@ -68,18 +68,18 @@
                 {% if request.user.is_authenticated %}
                 <a class="basket" href="">
                     <img class="basket-img" src="{% static 'shopping-cart.svg' %}" alt="shopping-cart">
-                    <div class="basket-text">Корзина</div>
+                    <div class="basket-text">{% trans 'Корзина' %}</div>
                 </a>
                     <a class="basket" href="{% url 'logout' %}">
-                        Выйти
+                        {% trans 'Выйти' %}
                     </a>
                 {% else %}
 <!--                <div class="login-reg-block">-->
                     <a class="basket" href="">
-                        Зарегистрироваться
+                        {% trans 'Зарегистрироваться' %}
                     </a>
                     <a class="basket" href="">
-                        Войти
+                        {% trans 'Войти' %}
                     </a>
 <!--                </div>-->
                 {% endif %}
@@ -100,7 +100,7 @@
                 <div class="asideElement">
                     <div class="catalog">
                         <a href="" class="aside-link">
-                            Каталог
+                            {% trans 'Каталог' %}
                         </a>
                         <img class="catalog-header" src="{% static 'Vector.svg' %}" alt="arrow" onclick="catalogSelect()">
                     </div>
@@ -114,18 +114,18 @@
 
                 <div class="asideElement">
                     <a href="" class="aside-link">
-                        Патенты и лицензии
+                        {% trans 'Патенты и лицензии' %}
                     </a>
                 </div>
 
                 <div class="asideElement">
                     <a href="" class="aside-link">
-                        Новости
+                        {% trans 'Новости' %}
                     </a>
                 </div>
                 <div class="asideElement">
                     <a href="" class="aside-link">
-                        Контакты
+                        {% trans 'Контакты' %}
                     </a>
                 </div>
 
@@ -158,7 +158,7 @@
 
                 <div class="footerElement1_1">
                     <div class="social_networks">
-                        <p>Мы в соцсетях:</p>
+                        <p>{% trans 'Мы в соцсетях' %}:</p>
                         <div class="social-net-Items">
                             <a class="social-net-Item" href="" >
                                 <img class="social-net-img" src="{% static 'vk.svg' %}" alt="vk">
@@ -176,15 +176,15 @@
                     </div>
 
                     <div class="linkBlock1">
-                        <a href="" class="footer_link2">НОВОСТИ</a>
+                        <a href="" class="footer_link2">{% trans 'НОВОСТИ' %}</a>
                     </div>
                 </div>
 
                 <div class="followBlock">
-                    <p>Подписаться на новости</p>
+                    <p>{% trans 'Подписаться на новости' %}</p>
                     <div class="newsFollow">
                         <input type="email" id="followEmail" name="Follow" placeholder="Введите ваш e-mail">
-                        <button type="submit" id="followButton">Подписаться
+                        <button type="submit" id="followButton">{% trans 'Подписаться' %}
                         </button>
                     </div>
                 </div>
@@ -194,7 +194,7 @@
             <div class="footerElement2">
                 <div class="footer_catalog">
                     <a href="" class="footer_link3">
-                        КАТАЛОГ
+                        {% trans 'КАТАЛОГ' %}
                     </a>
                     <div class="light_catalog-elements">
                         <a href="" class="footer_catalog-element">— Лопаты</a>
@@ -207,12 +207,12 @@
 
             <div class="footerElement3">
                 <div class="footer_contacts">
-                    <a href="" class="footer_link4">Контакты</a>
+                    <a href="" class="footer_link4">{% trans 'Контакты' %}</a>
                 </div>
                 <div class="footer_contact-elements">
                     <div class="contact_element">
                         <p class="light_catalog-elements">
-                            Телефон в Пскове:
+                            {% trans 'Телефон в Пскове' %}:
                         </p>
                         <a  href="tel:+78001205840">
                             +7 800 120-58-40
@@ -220,7 +220,7 @@
                     </div>
                     <div class="contact_element">
                         <p class="light_catalog-elements">
-                            Электронная почта:
+                            {% trans 'Электронная почта' %}:
                         </p>
                         <a  href="mailto:selhozinstrument@mail.ru">
                             selhozinstrument@mail.ru
@@ -228,7 +228,7 @@
                     </div>
                     <div class="contact_element">
                         <p class="light_catalog-elements">
-                            Адрес:
+                            {% trans 'Адрес' %}:
                         </p>
                         <p>
                             Г. Псков, пл. Ленина, 94

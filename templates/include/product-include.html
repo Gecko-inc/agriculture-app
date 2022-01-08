@@ -1,5 +1,10 @@
-{% load static %}
-
+{% load static  i18n %}
+<div class="title">
+    {% trans 'Список товаров' %}
+</div>
+<div class="one-product-desc numb-products">
+    {% trans 'Найдено' %} 5 {% trans 'товаров' %}:
+</div>
 <div class="products-list">
     <div class="one-product">
         <img class="one-product-img" src="{% static 'shovel-sample.svg' %}" alt="product">
