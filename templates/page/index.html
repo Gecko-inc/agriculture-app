@@ -1,5 +1,42 @@
 {% extends 'base.html' %}
-
+{% load static i18n %}
 {% block content %}
-        <h1>Hello world!</h1>
+<div class="title">
+    Категории
+</div>
+
+<div class="products">
+    <div class="product">
+        <img class="product-img" src="static/shovel.svg" alt="t">
+        <p class="product-title">Лопаты</p>
+    </div>
+    <div class="product">
+        <img class="product-img" src="static/rake.svg" alt="t">
+        <p class="product-title">Грабли</p>
+    </div>
+    <div class="product">
+        <img class="product-img" src="static/pitchfork.svg" alt="t">
+        <p class="product-title">Вилы</p>
+    </div>
+    <div class="product">
+        <img class="product-img" src="static/beekeeping.svg" alt="t">
+        <p class="product-title">Пчеловодство</p>
+    </div>
+</div>
+
+
+<!--    ******************************************* СПИСОК ТОВАРОВ-->
+<div class="title">
+    Список товаров
+</div>
+<div class="one-product-desc numb-products">
+    Найдено 5 товаров:
+</div>
+{% include 'include/product-include.html' %}
+
+
 {% endblock %}
+
+
+
+

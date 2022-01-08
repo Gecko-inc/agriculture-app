@@ -1,0 +1,118 @@
+
+
+
+.reg-order-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    width: 60%;
+    min-width: 300px;
+
+}
+.reg-form_name, .reg-form_phone, .reg-form_email, .reg-form_surname, .password1, .password2 {
+    background: transparent;
+    /*height: 45px;*/
+    border-bottom: 1.5px solid #6C786A;
+    padding: 0 2% 2% 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: inherit;
+    color: #343434;
+}
+.reg-orderButton {
+    font-weight: 500;
+    font-size: 18px;
+    color: white;
+    font-family: inherit;
+    background-color: #4FAE3C;
+    border-radius: 8px;
+    border: none;
+    height: auto;
+    min-height: 60px;
+    word-break: break-word;
+    cursor: pointer;
+    width: 50%;
+    min-width: 300px;
+}
+.reg-orderButton:hover{
+    box-shadow: 0 6px 10px 0 #B7CAD033;
+    border: 1px solid #E5E5E5;
+
+}
+.reg-form_name:focus::-webkit-input-placeholder, .reg-form_phone:focus::-webkit-input-placeholder, .reg-form_email:focus::-webkit-input-placeholder,.reg-form_surname:focus::-webkit-input-placeholder,
+.password1:focus::-webkit-input-placeholder, .password2:focus::-webkit-input-placeholder
+{
+    color: transparent
+}
+
+.reg-form_name:focus::-moz-placeholder, .reg-form_phone:focus::-moz-placeholder, .reg-form_email:focus::-moz-placeholder,.reg-form_surname:focus::-moz-placeholder,
+.password1:focus::-moz-placeholder, .password2:focus::-moz-placeholder
+{
+    color: transparent
+}
+
+.reg-form_name:focus:-moz-placeholder, .reg-form_phone:focus:-moz-placeholder, .reg-form_email:focus:-moz-placeholder,.reg-form_surname:focus:-moz-placeholder,
+.password1:focus:-moz-placeholder, .password2:focus:-moz-placeholder
+{
+    color: transparent
+}
+.reg-form_name:focus:-ms-input-placeholder, .reg-form_phone:focus:-ms-input-placeholder, .reg-form_email:focus:-ms-input-placeholder,.reg-form_surname:focus:-ms-input-placeholder,
+.password1:focus:-ms-input-placeholder, .password2:focus:-ms-input-placeholder
+{
+    color: transparent
+}
+
+
+
+.reg-form_name._red:focus::-webkit-input-placeholder, .reg-form_phone._red:focus::-webkit-input-placeholder, .reg-form_email._red:focus::-webkit-input-placeholder,.reg-form_surname._red:focus::-webkit-input-placeholder,
+.password1._red:focus::-webkit-input-placeholder, .password2._red:focus::-webkit-input-placeholder{
+    color: transparent;
+}
+
+/*Chrome 57 и Firefox 51*/
+
+.reg-form_name._red::placeholder, .reg-form_phone._red::placeholder, .reg-form_email._red::placeholder, .reg-form_surname._red::placeholder,
+.password1._red::placeholder, .password2._red::placeholder{
+    color: #921202;
+}
+/*Firefox новые версии*/
+.reg-form_name._red::-moz-placeholder, .reg-form_phone._red::-moz-placeholder, .reg-form_email._red::-moz-placeholder, .reg-form_surname._red::-moz-placeholder,
+.password1::-moz-placeholder, .password2::-moz-placeholder{
+    color: #921202;
+}
+/*Internet Explorer*/
+.reg-form_name._red:-ms-input-placeholder, .reg-form_phone._red:-ms-input-placeholder, .reg-form_email._red:-ms-input-placeholder, .reg-form_surname._red:-ms-input-placeholder,
+.password1._red::-moz-placeholder, .password2._red::-moz-placeholder{
+    color: #921202;
+}
+/*Microsoft Edge*/
+.reg-form_name._red::-ms-input-placeholder, .reg-form_phone._red::-ms-input-placeholder, .reg-form_email._red::-ms-input-placeholder, .reg-form_surname._red::-ms-input-placeholder,
+.password1._red::-ms-input-placeholder, .password2._red::-ms-input-placeholder{
+    color: #921202;
+}
+/*Chrome, Opera и Safari*/
+.reg-form_name._red::-webkit-input-placeholder, .reg-form_phone._red::-webkit-input-placeholder, .reg-form_email._red::-webkit-input-placeholder, .reg-form_surname._red::-webkit-input-placeholder,
+.password1._red::-webkit-input-placeholder, .password2._red::-webkit-input-placeholder {
+    color: #921202;
+}
+/*Firefox с 4 по 19 версии*/
+.reg-form_name._red-moz-placeholder, .reg-form_phone._red-moz-placeholder, .reg-form_email._red-moz-placeholder, .reg-form_surname._red-moz-placeholder,
+.password1._red-moz-placeholder, .password2._red-moz-placeholder{
+    color: #921202;
+}
+
+/*валидация полей КОНЕЦ*/
+
+
+
+
+
+
+
+
+
+
+
+/*============================УДАЧНАЯ ОТПРАВКА ФОРМЫ*/
+
+

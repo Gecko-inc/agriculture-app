@@ -1,0 +1,113 @@
+
+
+
+.auth-order-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    width: 60%;
+    min-width: 300px;
+
+}
+.auth-form_email,  .password {
+    background: transparent;
+    /*height: 45px;*/
+    border-bottom: 1.5px solid #6C786A;
+    padding: 0 2% 2% 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: inherit;
+    color: #343434;
+}
+.auth-orderButton {
+    font-weight: 500;
+    font-size: 18px;
+    color: white;
+    font-family: inherit;
+    background-color: #4FAE3C;
+    border-radius: 8px;
+    border: none;
+    height: auto;
+    min-height: 60px;
+    word-break: break-word;
+    cursor: pointer;
+    width: 50%;
+    min-width: 300px;
+}
+.auth-orderButton:hover{
+    box-shadow: 0 6px 10px 0 #B7CAD033;
+    border: 1px solid #E5E5E5;
+
+}
+ .auth-form_email:focus::-webkit-input-placeholder,
+.password1:focus::-webkit-input-placeholder
+{
+    color: transparent
+}
+
+ .auth-form_email:focus::-moz-placeholder, .password:focus::-moz-placeholder
+{
+    color: transparent
+}
+
+.auth-form_email:focus:-moz-placeholder, .password:focus:-moz-placeholder
+{
+    color: transparent
+}
+.auth-form_email:focus:-ms-input-placeholder, .password:focus:-ms-input-placeholder
+{
+    color: transparent
+}
+
+
+
+.auth-form_email._red:focus::-webkit-input-placeholder, .password._red:focus::-webkit-input-placeholder{
+    color: transparent;
+}
+
+/*Chrome 57 и Firefox 51*/
+
+.auth-form_email._red::placeholder, .password._red::placeholder{
+    color: #921202;
+}
+/*Firefox новые версии*/
+ .auth-form_email._red::-moz-placeholder, .password._red::-moz-placeholder
+{
+    color: #921202;
+}
+/*Internet Explorer*/
+ .auth-form_email._red:-ms-input-placeholder, .password._red::-moz-placeholder{
+    color: #921202;
+}
+/*Microsoft Edge*/
+ .auth-form_email._red::-ms-input-placeholder,  .password._red::-ms-input-placeholder{
+    color: #921202;
+}
+/*Chrome, Opera и Safari*/
+ .auth-form_email._red::-webkit-input-placeholder,  .password._red::-webkit-input-placeholder {
+    color: #921202;
+}
+/*Firefox с 4 по 19 версии*/
+.auth-form_email._red-moz-placeholder,  .password._red-moz-placeholder{
+    color: #921202;
+}
+
+/*валидация полей КОНЕЦ*/
+
+
+
+
+
+
+
+
+
+
+
+/*============================УДАЧНАЯ ОТПРАВКА ФОРМЫ*/
+
+
+
+
+
+

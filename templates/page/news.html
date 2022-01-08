@@ -1,23 +1,23 @@
-{% load i18n static %}
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
+    <title>Новости</title>
     <meta charset="utf-8">
-    <title>Садовый интсрумент</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block style %}
-    <link type="text/css" href = "{% static 'index.css' %}" rel = "stylesheet">
-    {% endblock %}
+    <link type="text/css" href = "static/index.css" rel = "stylesheet">
+    <link type="text/css" href = "static/news/news.css" rel = "stylesheet">
+
+
 </head>
 <body>
 <div class="wrapper">
-<!--    *******************************************HEADER-->
+    <!--    *******************************************HEADER-->
     <header>
         <div class="header_elements">
             <div class="header_elements-left">
                 <div class="logo">
                     <a class="link__logo-img" href="" >
-                        <img class="logo-img" src="{% static 'logo.svg' %}" alt="logo">
+                        <img class="logo-img" src="static/logo.svg" alt="logo">
                     </a>
                     <a class="link__logo-name" href="">
                         Садовый инструмент
@@ -25,58 +25,38 @@
                 </div>
 
 
-{#                <div class="translation">#}
-{##}
-{#                    <div class="select is-active">#}
-{#                    <div class="translation-language">ru</div>#}
-
-
-{#                        <img class="select-header" src="static/Vector.svg" alt="arrow">#}
-{#                        <div class="select-body">#}
-{#                            <div class="select-body-style">#}
-{#                                <div class="select-item">ru</div>#}
-{#                                <div class="select-item">en</div>#}
-{#                                <div class="select-item">de</div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
-{#                </div>#}
                 <div class="translation">
-                <div class="translation-language">{{ request.LANGUAGE_CODE }}</div>
-                {% get_current_language as LANGUAGE_CODE %}
-            {% get_available_languages as LANGUAGES %}
-            {% get_language_info_list for LANGUAGES as languages %}
-                {% for language in languages %}
-                <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                    <input name="next" type="hidden" value="{{ redirect_to }}">
-                    <select class="custom-select" name="language" style="display: none;">
-                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
-                            selected{% endif %}>
-                            {{ language.name_local }} ({{ language.code }})
-                        </option>
-                    </select>
-                        <button type="submit" class="buttonLenguage">
-                            {{ language.code }}
-                        </button>
-                </form>
-            {% endfor %}
+
+                    <div class="select is-active">
+                        <div class="translation-language">ru</div>
+
+
+                        <img class="select-header" src="static/Vector.svg" alt="arrow">
+                        <div class="select-body">
+                            <div class="select-body-style">
+                                <div class="select-item">ru</div>
+                                <div class="select-item">en</div>
+                                <div class="select-item">de</div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
             <div class="header_elements-right">
                 <a class="basket" href="">
-                    <img class="basket-img" src="{% static 'shopping-cart.svg' %}" alt="shopping-cart">
+                    <img class="basket-img" src="static/shopping-cart.svg" alt="shopping-cart">
                     <div class="basket-text">Корзина</div>
                 </a>
-<!--                <div class="login-reg-block">-->
-                    <a class="basket" href="">
-                        Зарегистрироваться
-                    </a>
-                    <a class="basket" href="">
-                        Войти
-                    </a>
-<!--                </div>-->
+                <!--                <div class="login-reg-block">-->
+                <a class="basket" href="">
+                    Зарегистрироваться
+                </a>
+                <a class="basket" href="">
+                    Войти
+                </a>
+                <!--                </div>-->
             </div>
 
 
@@ -96,7 +76,7 @@
                         <a href="" class="aside-link">
                             Каталог
                         </a>
-                        <img class="catalog-header" src="{% static 'Vector.svg' %}" alt="arrow" onclick="catalogSelect()">
+                        <img class="catalog-header" src="static/Vector.svg" alt="arrow" onclick="catalogSelect()">
                     </div>
                     <div class="catalog-items">
                         <a class="catalog-item" href="">— Лопаты</a>
@@ -117,6 +97,7 @@
                         Новости
                     </a>
                 </div>
+
                 <div class="asideElement">
                     <a href="" class="aside-link">
                         Контакты
@@ -128,15 +109,76 @@
 
 
 
-
-
         <!--    *******************************************CONTENT-->
 
         <div class="content" >
-    {% block content %}
-    {% endblock %}
+            <!--                *******************************************  -->
+            <div class="title">
+                Новости
+            </div>
+
+            <div class="block-all-news">
+                <div class="block-news">
+                    <img class="news-img" src="static/news/news1.png" alt="news">
+                    <div class="block-news-date">
+                        <p>10.09.2021</p>
+                    </div>
+                    <a href="" class="block-news-title">Поставка новой партии уже на этих выходных</a>
+                </div>
+                <div class="block-news">
+                    <img class="news-img" src="static/news/news2.png" alt="news">
+                    <div class="block-news-date">
+                        <p>10.09.2021</p>
+                    </div>
+                    <a href="" class="block-news-title">Поставка новой партии уже на этих выходных</a>
+                </div>
+                <div class="block-news">
+                    <img class="news-img" src="static/news/news3.png" alt="news">
+                    <div class="block-news-date">
+                        <p>10.09.2021</p>
+                    </div>
+                    <a href="" class="block-news-title">Поставка новой партии уже на этих выходных</a>
+                </div>
+                <div class="block-news">
+                    <img class="news-img" src="static/news/news4.png" alt="news">
+                    <div class="block-news-date">
+                        <p>10.09.2021</p>
+                    </div>
+                    <a href="" class="block-news-title">Поставка новой партии уже на этих выходных</a>
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="scrollGoods">
+                <button type="submit" class="showMore">Показать еще</button>
+                <div class="scroll">
+                    <div class="number-page">
+                        <div class="this-page">
+                            1
+                        </div>
+                        <div class="all-page">
+                            из 24
+                        </div>
+                    </div>
+                    <a href="" class="leftLink">
+                        <img src="static/product/scroll-left.svg" alt="left" >
+                    </a>
+                    <a href="" class="rightLink">
+                        <img src="static/product/scroll-right.svg" alt="right" >
+                    </a>
+                </div>
+
+            </div>
+
         </div>
-       <div class="clear"></div>
+
+
+
+        <div class="clear"></div>
     </div>
 
 
@@ -155,16 +197,16 @@
                         <p>Мы в соцсетях:</p>
                         <div class="social-net-Items">
                             <a class="social-net-Item" href="" >
-                                <img class="social-net-img" src="{% static 'vk.svg' %}" alt="vk">
+                                <img class="social-net-img" src="static/vk.svg" alt="vk">
                             </a>
                             <a class="social-net-Item" href="" >
-                                <img class="social-net-img" src="{% static 'ok.svg' %}" alt="ok">
+                                <img class="social-net-img" src="static/ok.svg" alt="ok">
                             </a>
                             <a class="social-net-Item" href="" >
-                                <img class="social-net-img" src="{% static 'fb.svg' %}" alt="fb">
+                                <img class="social-net-img" src="static/fb.svg" alt="fb">
                             </a>
                             <a class="social-net-Item" href="" >
-                                <img class="social-net-img" src="{% static 'inst.svg' %}" alt="inst">
+                                <img class="social-net-img" src="static/inst.svg" alt="inst">
                             </a>
                         </div>
                     </div>
@@ -235,8 +277,10 @@
         </div>
     </footer>
 </div>
-{% block script %}
-<script src="{% static 'index.js' %}"></script>
-{% endblock %}
+
+
+
+<script src="static/index.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,32 @@
+.news-bread-crumbs {
+    color: #6C786A;
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    position: absolute;
+    margin-top: 40px;
+
+}
+.news-bread-crumb-link:hover {
+    color: #4FAE3C;
+}
+.news-bread-crumb-space {
+    color: #4FAE3C;
+}
+.one-news-date{
+    font-size: 16px;
+    color: #6C786A;
+    font-weight: 400;
+}
+.new-text {
+    font-size: 16px;
+    margin-top: 50px;
+    display: flex;
+     flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.one-news-img {
+    width: 30%;
+    min-width: 200px;
+}

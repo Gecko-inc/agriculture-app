@@ -1,0 +1,174 @@
+
+p {
+    display: block;
+}
+.order-block{
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    background: #F1F4EE;
+    border-radius: 10px;
+    padding: 3%;
+    box-sizing: border-box;
+    width: 70%;
+    min-width: 300px;
+}
+.order-block-products {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+}
+.order-block-product {
+    height: auto;
+    min-height: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+.order-block-photo{
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+}
+.order-block-text{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    width: max-content;
+    max-width: 300px;
+}
+.order-block-title{
+    font-size: 14px;
+    font-weight: 400;
+}
+.order-block-article {
+    font-weight: 400;
+    font-size: 12px;
+    color: #6C786A;
+}
+
+
+.order-block-prise {
+    font-size: 16px;
+}
+.final-prise {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 24px;
+    flex-wrap: wrap;
+}
+
+
+
+
+.order-text{
+    margin: 50px 0;
+}
+
+
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    width: 60%;
+    min-width: 300px;
+
+}
+.form_name, .form_phone, .form_email, .form_surname {
+    background: transparent;
+    /*height: 45px;*/
+    border-bottom: 1.5px solid #6C786A;
+    padding: 0 2% 2% 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: inherit;
+    color: #343434;
+}
+.orderButton {
+    font-weight: 500;
+    font-size: 18px;
+    color: white;
+    font-family: inherit;
+    background-color: #4FAE3C;
+    border-radius: 8px;
+    border: none;
+    height: auto;
+    min-height: 60px;
+    word-break: break-word;
+    cursor: pointer;
+    width: 50%;
+    min-width: 300px;
+}
+.orderButton:hover{
+    box-shadow: 0 6px 10px 0 #B7CAD033;
+    border: 1px solid #E5E5E5;
+
+}
+.form_name:focus::-webkit-input-placeholder, .form_phone:focus::-webkit-input-placeholder, .form_email:focus::-webkit-input-placeholder,.form_surname:focus::-webkit-input-placeholder
+{
+    color: transparent
+}
+
+.form_name:focus::-moz-placeholder, .form_phone:focus::-moz-placeholder, .form_email:focus::-moz-placeholder,.form_surname:focus::-moz-placeholder
+{
+    color: transparent
+}
+
+.form_name:focus:-moz-placeholder, .form_phone:focus:-moz-placeholder, .form_email:focus:-moz-placeholder,.form_surname:focus:-moz-placeholder
+{
+    color: transparent
+}
+.form_name:focus:-ms-input-placeholder, .form_phone:focus:-ms-input-placeholder, .form_email:focus:-ms-input-placeholder,.form_surname:focus:-ms-input-placeholder
+{
+    color: transparent
+}
+
+
+
+.form_name._red:focus::-webkit-input-placeholder, .form_phone._red:focus::-webkit-input-placeholder, .form_email._red:focus::-webkit-input-placeholder,.form_surname._red:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+/*Chrome 57 и Firefox 51*/
+
+.form_name._red::placeholder, .form_phone._red::placeholder, .form_email._red::placeholder, .form_surname._red::placeholder{
+    color: #921202;
+}
+/*Firefox новые версии*/
+.form_name._red::-moz-placeholder, .form_phone._red::-moz-placeholder, .form_email._red::-moz-placeholder, .form_surname._red::-moz-placeholder{
+    color: #921202;
+}
+/*Internet Explorer*/
+.form_name._red:-ms-input-placeholder, .form_phone._red:-ms-input-placeholder, .form_email._red:-ms-input-placeholder, .form_surname._red:-ms-input-placeholder{
+    color: #921202;
+}
+/*Microsoft Edge*/
+.form_name._red::-ms-input-placeholder, .form_phone._red::-ms-input-placeholder, .form_email._red::-ms-input-placeholder, .form_surname._red::-ms-input-placeholder{
+    color: #921202;
+}
+/*Chrome, Opera и Safari*/
+.form_name._red::-webkit-input-placeholder, .form_phone._red::-webkit-input-placeholder, .form_email._red::-webkit-input-placeholder, .form_surname._red::-webkit-input-placeholder{
+    color: #921202;
+}
+/*Firefox с 4 по 19 версии*/
+.form_name._red-moz-placeholder, .form_phone._red-moz-placeholder, .form_email._red-moz-placeholder, .form_surname._red-moz-placeholder{
+    color: #921202;
+}
+
+/*валидация полей КОНЕЦ*/
+
+
+
+
+
+
+/*============================УДАЧНАЯ ОТПРАВКА ФОРМЫ*/
+
+

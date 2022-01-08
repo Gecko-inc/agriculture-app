@@ -155,33 +155,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.instagram.InstagramOAuth2',
-    'social_core.backends.vk.VKOAuth2',
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.telegram.TelegramAuth',
     'django.contrib.auth.backends.ModelBackend',
 )
-
-# Facebook
-SOCIAL_AUTH_FACEBOOK_KEY = auth_config.get("fb_id")
-SOCIAL_AUTH_FACEBOOK_SECRET = auth_config.get('fb_key')
-
-# Instagram
-SOCIAL_AUTH_INSTAGRAM_KEY = auth_config.get('inst_id')
-SOCIAL_AUTH_INSTAGRAM_SECRET = auth_config.get('inst_key')
-
-# Google
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = auth_config.get('google_id')
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = auth_config.get('google_key')
-
-# vk
-SOCIAL_AUTH_VK_OAUTH2_KEY = auth_config.get('vk_id')
-SOCIAL_AUTH_VK_OAUTH2_SECRET = auth_config.get('vk_key')
-
-# telegram
-SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = auth_config.get('tg_token')
-BOT_NAME = auth_config.get("tg_name")
 
 # Настройки локализации
 
@@ -196,10 +171,12 @@ gettext_noop = lambda s: s
 LANGUAGES = (
     ('ru', gettext_noop('Русский')),
     ('en', gettext_noop(u'ENG')),
+    ('de', gettext_noop(u'DE')),
 )
 LANGUAGES_ADMIN = {
     'ru': 'Русский',
     'en': u'Английский',
+    'de': u'Немецкий',
 }
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'), )
 MODELTRANSLATION_DEFAULT_LANGUAGE = LANGUAGE_CODE

@@ -16,9 +16,5 @@ class PersonAdmin(UserAdmin):
         (_("Основная информация"), {'fields': ('email', 'status')}),
         (_("Статус"), {'fields': ('is_active', 'is_staff', 'is_superuser',), }),
         (_("Дополнительная информация"), {'fields': ('last_login', 'date_joined')}),
+        (_("Привилегии"), {'fields': ('groups', )}),
     )
-
-
-@admin.register(UserStatus)
-class UserStatusAdmin(admin.ModelAdmin):
-    pass

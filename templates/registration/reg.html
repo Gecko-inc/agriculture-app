@@ -1,23 +1,21 @@
-{% load i18n static %}
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
+    <title>Регистрация</title>
     <meta charset="utf-8">
-    <title>Садовый интсрумент</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block style %}
-    <link type="text/css" href = "{% static 'index.css' %}" rel = "stylesheet">
-    {% endblock %}
+    <link type="text/css" href = "static/index.css" rel = "stylesheet">
+    <link type="text/css" href = "static/reg/reg.css" rel = "stylesheet">
 </head>
 <body>
 <div class="wrapper">
-<!--    *******************************************HEADER-->
+    <!--    *******************************************HEADER-->
     <header>
         <div class="header_elements">
             <div class="header_elements-left">
                 <div class="logo">
                     <a class="link__logo-img" href="" >
-                        <img class="logo-img" src="{% static 'logo.svg' %}" alt="logo">
+                        <img class="logo-img" src="static/logo.svg" alt="logo">
                     </a>
                     <a class="link__logo-name" href="">
                         Садовый инструмент
@@ -25,58 +23,38 @@
                 </div>
 
 
-{#                <div class="translation">#}
-{##}
-{#                    <div class="select is-active">#}
-{#                    <div class="translation-language">ru</div>#}
-
-
-{#                        <img class="select-header" src="static/Vector.svg" alt="arrow">#}
-{#                        <div class="select-body">#}
-{#                            <div class="select-body-style">#}
-{#                                <div class="select-item">ru</div>#}
-{#                                <div class="select-item">en</div>#}
-{#                                <div class="select-item">de</div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
-{#                </div>#}
                 <div class="translation">
-                <div class="translation-language">{{ request.LANGUAGE_CODE }}</div>
-                {% get_current_language as LANGUAGE_CODE %}
-            {% get_available_languages as LANGUAGES %}
-            {% get_language_info_list for LANGUAGES as languages %}
-                {% for language in languages %}
-                <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                    <input name="next" type="hidden" value="{{ redirect_to }}">
-                    <select class="custom-select" name="language" style="display: none;">
-                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
-                            selected{% endif %}>
-                            {{ language.name_local }} ({{ language.code }})
-                        </option>
-                    </select>
-                        <button type="submit" class="buttonLenguage">
-                            {{ language.code }}
-                        </button>
-                </form>
-            {% endfor %}
+
+                    <div class="select is-active">
+                        <div class="translation-language">ru</div>
+
+
+                        <img class="select-header" src="static/Vector.svg" alt="arrow">
+                        <div class="select-body">
+                            <div class="select-body-style">
+                                <div class="select-item">ru</div>
+                                <div class="select-item">en</div>
+                                <div class="select-item">de</div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
             <div class="header_elements-right">
                 <a class="basket" href="">
-                    <img class="basket-img" src="{% static 'shopping-cart.svg' %}" alt="shopping-cart">
+                    <img class="basket-img" src="static/shopping-cart.svg" alt="shopping-cart">
                     <div class="basket-text">Корзина</div>
                 </a>
-<!--                <div class="login-reg-block">-->
-                    <a class="basket" href="">
-                        Зарегистрироваться
-                    </a>
-                    <a class="basket" href="">
-                        Войти
-                    </a>
-<!--                </div>-->
+                <!--                <div class="login-reg-block">-->
+                <a class="basket" href="">
+                    Зарегистрироваться
+                </a>
+                <a class="basket" href="">
+                    Войти
+                </a>
+                <!--                </div>-->
             </div>
 
 
@@ -96,7 +74,7 @@
                         <a href="" class="aside-link">
                             Каталог
                         </a>
-                        <img class="catalog-header" src="{% static 'Vector.svg' %}" alt="arrow" onclick="catalogSelect()">
+                        <img class="catalog-header" src="static/Vector.svg" alt="arrow" onclick="catalogSelect()">
                     </div>
                     <div class="catalog-items">
                         <a class="catalog-item" href="">— Лопаты</a>
@@ -117,6 +95,7 @@
                         Новости
                     </a>
                 </div>
+
                 <div class="asideElement">
                     <a href="" class="aside-link">
                         Контакты
@@ -133,10 +112,33 @@
         <!--    *******************************************CONTENT-->
 
         <div class="content" >
-    {% block content %}
-    {% endblock %}
+            <!--                *******************************************  ОФОРМЛЕНИЕ ЗАКАЗА-->
+            <div class="title">
+                Регистрация
+            </div>
+
+            <form id="regForm" action="#" enctype="multipart/form-data" method="post" class="reg-order-form">
+                <input type="text" name="name"  placeholder="Имя" class="reg-form_name _req">
+
+                <input type="text" name="surname"  placeholder="Фамилия" class="reg-form_surname _req">
+
+                <input type="tel" name="phone" id="reg-phone" placeholder="Телефон" class="reg-form_phone _req _tel" pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}">
+
+                <input type="email" name="email"  placeholder="Электронная почта" class="reg-form_email _req _email">
+
+                <input type="password" name="password1"  placeholder="Пароль" class="password1 _req">
+                <input type="password" name="password2"  placeholder="Повторите пароль" class="password2 _req">
+
+                <button id="reg-Button" class="reg-orderButton" type="submit">Зарегистрироваться</button>
+            </form>
+
+
+
         </div>
-       <div class="clear"></div>
+
+
+
+        <div class="clear"></div>
     </div>
 
 
@@ -155,16 +157,16 @@
                         <p>Мы в соцсетях:</p>
                         <div class="social-net-Items">
                             <a class="social-net-Item" href="" >
-                                <img class="social-net-img" src="{% static 'vk.svg' %}" alt="vk">
+                                <img class="social-net-img" src="static/vk.svg" alt="vk">
                             </a>
                             <a class="social-net-Item" href="" >
-                                <img class="social-net-img" src="{% static 'ok.svg' %}" alt="ok">
+                                <img class="social-net-img" src="static/ok.svg" alt="ok">
                             </a>
                             <a class="social-net-Item" href="" >
-                                <img class="social-net-img" src="{% static 'fb.svg' %}" alt="fb">
+                                <img class="social-net-img" src="static/fb.svg" alt="fb">
                             </a>
                             <a class="social-net-Item" href="" >
-                                <img class="social-net-img" src="{% static 'inst.svg' %}" alt="inst">
+                                <img class="social-net-img" src="static/inst.svg" alt="inst">
                             </a>
                         </div>
                     </div>
@@ -235,8 +237,17 @@
         </div>
     </footer>
 </div>
-{% block script %}
-<script src="{% static 'index.js' %}"></script>
-{% endblock %}
+
+<script src="https://unpkg.com/imask"></script>
+<script>
+    var element = document.getElementById('reg-phone');
+    var maskOptions = {
+        mask: '+{7} (000) 000-00-00'
+    };
+    var mask = IMask(element, maskOptions);
+</script>
+
+<script src="static/reg/reg.js"></script>
+<script src="static/index.js"></script>
 </body>
 </html>

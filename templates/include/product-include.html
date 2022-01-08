@@ -1,0 +1,33 @@
+{% load static %}
+
+<div class="products-list">
+    <div class="one-product">
+        <img class="one-product-img" src="{% static 'shovel-sample.svg' %}" alt="product">
+        <p class="one-product-art">Арт. 81955972</p>
+        <p class="one-product-desc">Лопата для земляных работ Fiskars SolidTM, 120 см сталь, с черенком
+        </p>
+        <p class="one-product-price">816 ₽/шт </p>
+    </div>
+
+</div>
+
+{#    Пагинация#}
+<div class="scrollGoods">
+    <div class="scroll">
+        <div class="number-page">
+            <div class="this-page">
+                1
+            </div>
+            <div class="all-page">
+                из 24
+            </div>
+        </div>
+        <a href="" class="leftLink">
+            <img src="{% static 'product/scroll-left.svg' %}" alt="left">
+        </a>
+        <a href="" class="rightLink">
+            <img src="{% static 'product/scroll-right.svg' %}" alt="right">
+        </a>
+    </div>
+
+</div>

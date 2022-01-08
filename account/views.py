@@ -8,7 +8,7 @@ from .models import UserStatus
 
 
 class Registration(FormView):
-    template_name = "registration/register.html"
+    template_name = "registration/reg.html"
     form_class = UserRegistrationForm
     success_url = "/login/"
 
@@ -32,6 +32,8 @@ class Registration(FormView):
 
 
 class Login(LoginView):
+    template_name = 'registration/auth.html'
+
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             return redirect("/")
