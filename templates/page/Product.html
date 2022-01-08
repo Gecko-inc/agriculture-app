@@ -1,125 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Садовый интсрумент</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" href = "static/index.css" rel = "stylesheet">
-    <link type="text/css" href = "static/product/product.css" rel = "stylesheet">
+{% extends 'base.html' %}
+{% load static i18n %}
 
-
-</head>
-<body>
-<div class="wrapper">
-    <!--    *******************************************HEADER-->
-    <header>
-        <div class="header_elements">
-            <div class="header_elements-left">
-                <div class="logo">
-                    <a class="link__logo-img" href="" >
-                        <img class="logo-img" src="static/logo.svg" alt="logo">
-                    </a>
-                    <a class="link__logo-name" href="">
-                        Садовый инструмент
-                    </a>
-                </div>
-
-
-                <div class="translation">
-
-                    <div class="select is-active">
-                        <div class="translation-language">ru</div>
-
-
-                        <img class="select-header" src="static/Vector.svg" alt="arrow">
-                        <div class="select-body">
-                            <div class="select-body-style">
-                                <div class="select-item">ru</div>
-                                <div class="select-item">en</div>
-                                <div class="select-item">de</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="header_elements-right">
-                <a class="basket" href="">
-                    <img class="basket-img" src="static/shopping-cart.svg" alt="shopping-cart">
-                    <div class="basket-text">Корзина</div>
-                </a>
-                <!--                <div class="login-reg-block">-->
-                <a class="basket" href="">
-                    Зарегистрироваться
-                </a>
-                <a class="basket" href="">
-                    Войти
-                </a>
-                <!--                </div>-->
-            </div>
-
-
-
-
-        </div>
-    </header>
-
-
-    <div class="main">
-        <!--    *******************************************SIDEBAR-->
-        <div class="aside">
-            <div id="aside-block">
-
-                <div class="asideElement">
-                    <div class="catalog">
-                        <a href="" class="aside-link">
-                            Каталог
-                        </a>
-                        <img class="catalog-header" src="static/Vector.svg" alt="arrow" onclick="catalogSelect()">
-                    </div>
-                    <div class="catalog-items">
-                        <a class="catalog-item" href="">— Лопаты</a>
-                        <a class="catalog-item" href="">— Грабли</a>
-                        <a class="catalog-item" href="">— Вилы</a>
-                        <a class="catalog-item" href="">— Для пчеловодства</a>
-                    </div>
-                </div>
-
-                <div class="asideElement">
-                    <a href="" class="aside-link">
-                        Патенты и лицензии
-                    </a>
-                </div>
-
-                <div class="asideElement">
-                    <a href="" class="aside-link">
-                        Новости
-                    </a>
-                </div>
-                <div class="asideElement">
-                    <a href="" class="aside-link">
-                        Обратная связь
-                    </a>
-                </div>
-                <div class="asideElement">
-                    <a href="" class="aside-link">
-                        Контакты
-                    </a>
-                </div>
-
-            </div>
-        </div>
-
-
-
-
-        <!--    ************************************************** ТОВАР -->
-        <div class="content" >
+{% block style %}
+{{ block.super }}
+    <link type="text/css" href = "{% static 'product/product.css' %}" rel = "stylesheet">
+{% endblock %}
+{% block content %}
             <!--    ************************************************** хлебные крошки -->
             <div class="bread-crumbs">
                 <a href="" class="bread-crumb-link">
-                    Каталог
+                    {% trans 'Каталог' %}
                 </a>
                 <p>
                     /
@@ -169,7 +59,7 @@
                                     <input type="radio" class="rating_item" value="5" name="rating">
                                 </div>
                             </div>
-                            <div class="rating_value">{{avg_comment}}</div>
+                            <div class="rating_value"></div>
                         </div>
                         <div class="numb-review">
                             5 отзывов
@@ -179,7 +69,7 @@
                     <div class="price">
                         1 006 ₽/шт
                     </div>
-                    <button type="submit" class="addToBasket">Добавить в корзину</button>
+                    <button type="submit" class="addToBasket">{% trans 'Добавить в корзину' %}</button>
                 </div>
             </div>
 
@@ -187,10 +77,10 @@
             <div class="info-block">
                 <div class="info-block-titles">
                     <div class="info-block-title-desc" onclick="selectDesc()">
-                        Описание
+                        {% trans 'Описание' %}
                     </div>
                     <div class="info-block-title-review" onclick="selectReview()">
-                        Отзывы
+                        {% trans 'Отзывы' %}
                     </div>
                 </div>
 
@@ -199,7 +89,7 @@
 
                 <div class="product-info-description">
                     <div class="product-info-title">
-                        Описание
+                        {% trans 'Описание' %}
                     </div>
                     <div class="info-desc">
                         Лопата штыковая Fiskars Solid используется при работе с грунтом  — для вскапывания и разрыхления земли. Удобство работы обеспечивает эргономичная рукоятка. Рабочая часть инструмента остроконечная, изготовлена из стали. Страна производства — Россия.
@@ -210,7 +100,7 @@
 <!--                ********************************************************* Раздел БЛОК ОТЗЫВОВ-->
                     <div class="product-info-review">
                         <div class="product-info-title">
-                            Отзывы
+                            {% trans 'Отзывы' %}
                         </div>
 
 
@@ -222,12 +112,12 @@
                                     <img class="rating-star" src="static/product/star.svg" alt="star">
                                 </div>
                                 <div class="rating-text">
-                                    На основе 5 оценок
+                                    {% trans 'На основе' %} 5 {% trans 'оценок' %}
                                 </div>
                             </div>
 
                             <div class="send-review">
-                                <div class="rating-text">Поставьте товару от 1 до 5 звёзд</div>
+                                <div class="rating-text">{% trans 'Поставьте товару от 1 до 5 звёзд' %}</div>
 
                                 <div class="box_star">
                                     <div class="rating rating_set">
@@ -241,13 +131,13 @@
                                                 <input type="radio" class="rating_item cursor" value="5" name="rating">
                                             </div>
                                         </div>
-                                        <div class="rating_value">{{avg_comment}}</div>
+                                        <div class="rating_value"></div>
                                     </div>
                                 </div>
 
                                 <form class="form" action="#" enctype="multipart/form-data" method="post">
                                     <textarea name="text"  id="comment" placeholder="Оставьте ваш отзыв" class="form_comment _req" data-aos="fade-left"></textarea>
-                                    <button id="submitApplication" class="addToBasket" type="submit" data-aos="fade-up">Отправить</button>
+                                    <button id="submitApplication" class="addToBasket" type="submit" data-aos="fade-up">{% trans 'Отправить' %}</button>
                                 </form>
                             </div>
                         </div>
@@ -272,7 +162,7 @@
                                                         <input type="radio" class="rating_item " value="5" name="rating">
                                                     </div>
                                                 </div>
-                                                <div class="rating_value">{{avg_comment}}</div>
+                                                <div class="rating_value"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -291,121 +181,10 @@
 
 
                     </div>
-                </div>
+{% endblock %}
 
-
-
-
-            </div>
-
-
-
-        </div>
-
-
-    </div>
-    <div class="clear"></div>
-</div>
-
-
-
-
-
-
-    <!--    *******************************************FOOTER-->
-    <footer>
-        <div class="footer-elements">
-
-            <div class="footerElement1">
-
-                <div class="footerElement1_1">
-                    <div class="social_networks">
-                        <p>Мы в соцсетях:</p>
-                        <div class="social-net-Items">
-                            <a class="social-net-Item" href="" >
-                                <img class="social-net-img" src="static/vk.svg" alt="vk">
-                            </a>
-                            <a class="social-net-Item" href="" >
-                                <img class="social-net-img" src="static/ok.svg" alt="ok">
-                            </a>
-                            <a class="social-net-Item" href="" >
-                                <img class="social-net-img" src="static/fb.svg" alt="fb">
-                            </a>
-                            <a class="social-net-Item" href="" >
-                                <img class="social-net-img" src="static/inst.svg" alt="inst">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="linkBlock1">
-                        <a href="" class="footer_link1">ОБРАТНАЯ СВЯЗЬ</a>
-                        <a href="" class="footer_link2">НОВОСТИ</a>
-                    </div>
-                </div>
-
-                <div class="followBlock">
-                    <p>Подписаться на новости</p>
-                    <div class="newsFollow">
-                        <input type="email" id="followEmail" name="Follow" placeholder="Введите ваш e-mail">
-                        <button type="submit" id="followButton">Подписаться
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="footerElement2">
-                <div class="footer_catalog">
-                    <a href="" class="footer_link3">
-                        КАТАЛОГ
-                    </a>
-                    <div class="light_catalog-elements">
-                        <a href="" class="footer_catalog-element">— Лопаты</a>
-                        <a href="" class="footer_catalog-element">— Вилы</a>
-                        <a href="" class="footer_catalog-element">— Грабли</a>
-                        <a href="" class="footer_catalog-element">— Для пчеловодства</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footerElement3">
-                <div class="footer_contacts">
-                    <a href="" class="footer_link4">Контакты</a>
-                </div>
-                <div class="footer_contact-elements">
-                    <div class="contact_element">
-                        <p class="light_catalog-elements">
-                            Телефон в Пскове:
-                        </p>
-                        <a  href="tel:+78001205840">
-                            +7 800 120-58-40
-                        </a>
-                    </div>
-                    <div class="contact_element">
-                        <p class="light_catalog-elements">
-                            Электронная почта:
-                        </p>
-                        <a  href="mailto:selhozinstrument@mail.ru">
-                            selhozinstrument@mail.ru
-                        </a>
-                    </div>
-                    <div class="contact_element">
-                        <p class="light_catalog-elements">
-                            Адрес:
-                        </p>
-                        <p>
-                            Г. Псков, пл. Ленина, 94
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
-
-<script src="static/product/product.js"></script>
-<script src="static/rating.js"></script>
-<script src="static/index.js"></script>
-</body>
-</html>
+{% block script %}
+    {{ block.super }}
+<script src="{% static 'product/product.js' %}"></script>
+<script src="{% static 'rating.js' %}"></script>
+{% endblock %}

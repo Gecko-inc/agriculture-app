@@ -3,89 +3,89 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-    <title>Садовый интсрумент</title>
+    {% block title %}
+        <title>Садовый интсрумент</title>
+    {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block style %}
-    <link type="text/css" href = "{% static 'index.css' %}" rel = "stylesheet">
+        <link type="text/css" href="{% static 'index.css' %}" rel="stylesheet">
     {% endblock %}
 </head>
 <body>
 <div class="wrapper">
-<!--    *******************************************HEADER-->
+    <!--    *******************************************HEADER-->
     <header>
         <div class="header_elements">
             <div class="header_elements-left">
                 <div class="logo">
-                    <a class="link__logo-img" href="" >
+                    <a class="link__logo-img" href="/">
                         <img class="logo-img" src="{% static 'logo.svg' %}" alt="logo">
                     </a>
-                    <a class="link__logo-name" href="">
+                    <a class="link__logo-name" href="/">
                         {% trans 'Садовый инструмент' %}
                     </a>
                 </div>
 
 
-{#                <div class="translation">#}
-{##}
-{#                    <div class="select is-active">#}
-{#                    <div class="translation-language">ru</div>#}
+                {#                <div class="translation">#}
+                {##}
+                {#                    <div class="select is-active">#}
+                {#                    <div class="translation-language">ru</div>#}
 
 
-{#                        <img class="select-header" src="static/Vector.svg" alt="arrow">#}
-{#                        <div class="select-body">#}
-{#                            <div class="select-body-style">#}
-{#                                <div class="select-item">ru</div>#}
-{#                                <div class="select-item">en</div>#}
-{#                                <div class="select-item">de</div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
-{#                </div>#}
+                {#                        <img class="select-header" src="static/Vector.svg" alt="arrow">#}
+                {#                        <div class="select-body">#}
+                {#                            <div class="select-body-style">#}
+                {#                                <div class="select-item">ru</div>#}
+                {#                                <div class="select-item">en</div>#}
+                {#                                <div class="select-item">de</div>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {##}
+                {#                </div>#}
                 <div class="translation">
-                <div class="translation-language">{{ request.LANGUAGE_CODE }}</div>
-                {% get_current_language as LANGUAGE_CODE %}
-            {% get_available_languages as LANGUAGES %}
-            {% get_language_info_list for LANGUAGES as languages %}
-                {% for language in languages %}
-                <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                    <input name="next" type="hidden" value="{{ redirect_to }}">
-                    <select class="custom-select" name="language" style="display: none;">
-                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
-                            selected{% endif %}>
-                            {{ language.name_local }} ({{ language.code }})
-                        </option>
-                    </select>
-                        <button type="submit" class="buttonLenguage">
-                            {{ language.code }}
-                        </button>
-                </form>
-            {% endfor %}
+                    <div class="translation-language">{{ request.LANGUAGE_CODE }}</div>
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}">
+                            <select class="custom-select" name="language" style="display: none;">
+                                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                                        selected{% endif %}>
+                                    {{ language.name_local }} ({{ language.code }})
+                                </option>
+                            </select>
+                            <button type="submit" class="buttonLenguage">
+                                {{ language.code }}
+                            </button>
+                        </form>
+                    {% endfor %}
                 </div>
             </div>
 
             <div class="header_elements-right">
                 {% if request.user.is_authenticated %}
-                <a class="basket" href="">
-                    <img class="basket-img" src="{% static 'shopping-cart.svg' %}" alt="shopping-cart">
-                    <div class="basket-text">{% trans 'Корзина' %}</div>
-                </a>
+                    <a class="basket" href="">
+                        <img class="basket-img" src="{% static 'shopping-cart.svg' %}" alt="shopping-cart">
+                        <div class="basket-text">{% trans 'Корзина' %}</div>
+                    </a>
                     <a class="basket" href="{% url 'logout' %}">
                         {% trans 'Выйти' %}
                     </a>
                 {% else %}
-<!--                <div class="login-reg-block">-->
+                    <!--                <div class="login-reg-block">-->
                     <a class="basket" href="">
                         {% trans 'Зарегистрироваться' %}
                     </a>
                     <a class="basket" href="">
                         {% trans 'Войти' %}
                     </a>
-<!--                </div>-->
+                    <!--                </div>-->
                 {% endif %}
             </div>
-
-
 
 
         </div>
@@ -102,7 +102,8 @@
                         <a href="" class="aside-link">
                             {% trans 'Каталог' %}
                         </a>
-                        <img class="catalog-header" src="{% static 'Vector.svg' %}" alt="arrow" onclick="catalogSelect()">
+                        <img class="catalog-header" src="{% static 'Vector.svg' %}" alt="arrow"
+                             onclick="catalogSelect()">
                     </div>
                     <div class="catalog-items">
                         <a class="catalog-item" href="">— Лопаты</a>
@@ -133,21 +134,14 @@
         </div>
 
 
-
-
-
         <!--    *******************************************CONTENT-->
 
-        <div class="content" >
-    {% block content %}
-    {% endblock %}
+        <div class="content">
+            {% block content %}
+            {% endblock %}
         </div>
-       <div class="clear"></div>
+        <div class="clear"></div>
     </div>
-
-
-
-
 
 
     <!--    *******************************************FOOTER-->
@@ -160,16 +154,16 @@
                     <div class="social_networks">
                         <p>{% trans 'Мы в соцсетях' %}:</p>
                         <div class="social-net-Items">
-                            <a class="social-net-Item" href="" >
+                            <a class="social-net-Item" href="">
                                 <img class="social-net-img" src="{% static 'vk.svg' %}" alt="vk">
                             </a>
-                            <a class="social-net-Item" href="" >
+                            <a class="social-net-Item" href="">
                                 <img class="social-net-img" src="{% static 'ok.svg' %}" alt="ok">
                             </a>
-                            <a class="social-net-Item" href="" >
+                            <a class="social-net-Item" href="">
                                 <img class="social-net-img" src="{% static 'fb.svg' %}" alt="fb">
                             </a>
-                            <a class="social-net-Item" href="" >
+                            <a class="social-net-Item" href="">
                                 <img class="social-net-img" src="{% static 'inst.svg' %}" alt="inst">
                             </a>
                         </div>
@@ -214,7 +208,7 @@
                         <p class="light_catalog-elements">
                             {% trans 'Телефон в Пскове' %}:
                         </p>
-                        <a  href="tel:+78001205840">
+                        <a href="tel:+78001205840">
                             +7 800 120-58-40
                         </a>
                     </div>
@@ -222,7 +216,7 @@
                         <p class="light_catalog-elements">
                             {% trans 'Электронная почта' %}:
                         </p>
-                        <a  href="mailto:selhozinstrument@mail.ru">
+                        <a href="mailto:selhozinstrument@mail.ru">
                             selhozinstrument@mail.ru
                         </a>
                     </div>
@@ -241,7 +235,7 @@
     </footer>
 </div>
 {% block script %}
-<script src="{% static 'index.js' %}"></script>
+    <script src="{% static 'index.js' %}"></script>
 {% endblock %}
 </body>
 </html>
