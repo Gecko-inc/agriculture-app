@@ -123,6 +123,7 @@
                     </div>
                 </div>
 
+                {% if request.user.is_authenticated %}
                 <div class="send-review">
                     <div class="rating-text">{% trans 'Поставьте товару от 1 до 5 звёзд' %}</div>
 
@@ -151,6 +152,7 @@
                                 data-aos="fade-up">{% trans 'Отправить' %}</button>
                     </form>
                 </div>
+                {% endif %}
             </div>
 
             <div class="user-comments">
