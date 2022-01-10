@@ -18,7 +18,7 @@ class Index(TemplateView):
             category = self.request.GET.get('category', categories[0].id)
             products_list = Product.objects.filter(is_active=True, category_id=category)
             page_num = self.request.GET.get('page', 1)
-            paginator = Paginator(products_list, 4)
+            paginator = Paginator(products_list, 6)
             try:
                 products = paginator.page(page_num)
             except PageNotAnInteger:
