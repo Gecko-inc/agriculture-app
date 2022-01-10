@@ -1,6 +1,13 @@
 
 
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    width: 60%;
+    min-width: 300px;
 
+}
 .auth-order-form {
     display: flex;
     flex-direction: column;

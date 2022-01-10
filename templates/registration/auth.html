@@ -11,11 +11,11 @@
     <div class="title">
         {% trans 'Вход' %}
     </div>
- <form method="post" >
+ <form method="post" class="auth-form">
     {% csrf_token %}
     {{ form.username }}
         {{ form.password }}
-    <input type="submit">
+    <input type="submit" class="auth-orderButton ">
 </form>
 {#    <form id="authForm" action="#" enctype="multipart/form-data" method="post" class="auth-order-form">#}
 {#        {% csrf_token %}#}

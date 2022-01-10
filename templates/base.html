@@ -51,7 +51,7 @@
                 <div class="translation">
                     <div class="translation-language">{{ request.LANGUAGE_CODE }}</div>
                     {% for language in languages %}
-                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                        <form action="{% url 'set_language' %}" method="post" class="form-lang">{% csrf_token %}
                             <input name="next" type="hidden" value="{{ redirect_to }}">
                             <select class="custom-select" name="language" style="display: none;">
                                 <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
@@ -115,18 +115,18 @@
                 </div>
 
                 <div class="asideElement">
-                    <a href="{% url 'section:license' %}" class="aside-link">
+                    <a href="/license/" class="aside-link">
                         {% trans 'Патенты и лицензии' %}
                     </a>
                 </div>
 
                 <div class="asideElement">
-                    <a href="{% url 'section:news' %}" class="aside-link">
+                    <a href="/news/" class="aside-link">
                         {% trans 'Новости' %}
                     </a>
                 </div>
                 <div class="asideElement">
-                    <a href="{% url 'section:contacts' %}" class="aside-link">
+                    <a href="/contacts/" class="aside-link">
                         {% trans 'Контакты' %}
                     </a>
                 </div>
@@ -179,7 +179,7 @@
                     </div>
 
                     <div class="linkBlock1">
-                        <a href="{% url 'section:news' %}" class="footer_link2">{% trans 'НОВОСТИ' %}</a>
+                        <a href="/news/" class="footer_link2">{% trans 'НОВОСТИ' %}</a>
                     </div>
                 </div>
 
@@ -209,7 +209,7 @@
 
             <div class="footerElement3">
                 <div class="footer_contacts">
-                    <a href="{% url 'section:contacts' %}" class="footer_link4">{% trans 'Контакты' %}</a>
+                    <a href="/contacts/" class="footer_link4">{% trans 'Контакты' %}</a>
                 </div>
                 <div class="footer_contact-elements">
                     {% if cfg.phone %}
