@@ -1,8 +1,8 @@
 {
   "apps": [
     {
-      "name": "system-process",
-      "args": "runserver 0:8888",
+      "name": "agro",
+      "args": "runserver 0:8021",
       "script": "manage.py",
       "exec_mode": "fork",
       "exec_interpreter": "env/bin/python"
