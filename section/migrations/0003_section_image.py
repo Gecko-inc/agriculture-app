@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='section',
             name='image',
-            field=models.ImageField(blank=True, upload_to=config.views.get_upload_to, verbose_name='Изображение'),
+            field=models.ImageField(blank=True, upload_to=config.core.get_upload_to, verbose_name='Изображение'),
         ),
     ]

@@ -1,190 +1,205 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
+
+{% block title %} <title>{{ product.title }}</title>{% endblock %}
 {% block style %}
-{{ block.super }}
-    <link type="text/css" href = "{% static 'product/product.css' %}" rel = "stylesheet">
+    {{ block.super }}
+    <link type="text/css" href="{% static 'product/product.css' %}" rel="stylesheet">
 {% endblock %}
 {% block content %}
-            <!--    ************************************************** хлебные крошки -->
-            <div class="bread-crumbs">
-                <a href="" class="bread-crumb-link">
-                    {% trans 'Каталог' %}
-                </a>
-                <p>
-                    /
-                </p>
-                <a href="" class="bread-crumb-link">
-                    Лопаты
-                </a>
+    <!--    ************************************************** хлебные крошки -->
+    <div class="bread-crumbs">
+        <a href="/#products" class="bread-crumb-link">
+            {% trans 'Каталог' %}
+        </a>
+        <p>
+            /
+        </p>
+        <a href="/?category={{ product.category.id }}#products" class="bread-crumb-link">
+            {{ product.category }}
+        </a>
+    </div>
+
+    <!--    ************************************************** САМ ТОВАР -->
+    <div class="product-block">
+
+        <div class="product-photos">
+            <div class="main-photo-block">
+                <img class="main-photo" src="{{ product.image.url }}" alt="main-photo">
             </div>
 
-            <!--    ************************************************** САМ ТОВАР -->
-            <div class="product-block">
+            <div class="other-photo">
+                {% for item in product.media.all %}
+                    {% if item.image.url %}
+                        <img class="small-photo" src="{{ item.image.url }}" alt="small-photo">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
 
-                <div class="product-photos">
-                    <div class="main-photo-block">
-                        <img class="main-photo" src="static/product/good-max.jpg" alt="main-photo">
-                    </div>
+        <div class="product-description">
+            <div class="article">
+                {{ product.article }}
+            </div>
+            <div class="product-title">
+                {{ product.title }}
+            </div>
 
-                    <div class="other-photo">
-                        <img class="small-photo" src="static/product/good-max.jpg" alt="small-photo">
-                        <img class="small-photo" src="static/product/good-min2.jpg" alt="small-photo">
-                        <img class="small-photo" src="static/product/good-min3.jpg" alt="small-photo">
-<!--                         <video class="small-photo">-->
-<!--                            <source src="" />-->
-<!--                        </video>-->
+
+            <!--    ************************************************** РЕЙТИНГ  -->
+            <div class="box_star cursor-none">
+                <div class="rating rating_set">
+                    <div class="rating_body">
+                        <div class="rating_active"></div>
+                        <div class="rating_items">
+                            <input type="radio" class="rating_item" value="1" name="rating">
+                            <input type="radio" class="rating_item" value="2" name="rating">
+                            <input type="radio" class="rating_item" value="3" name="rating">
+                            <input type="radio" class="rating_item" value="4" name="rating">
+                            <input type="radio" class="rating_item" value="5" name="rating">
+                        </div>
                     </div>
+                    <div class="rating_value">{{ product.avg_rate }}</div>
                 </div>
+                <div class="numb-review">
+                    {{ product.review_count }} {% trans 'отзывов' %}
+                </div>
+            </div>
 
-                <div class="product-description">
-                    <div class="article">
-                        Арт. 81955972
-                    </div>
-                    <div class="product-title">
-                        Лопата штыковая Fiskars SolidTM 116см сталь с черенком
-                    </div>
-
-
-                    <!--    ************************************************** РЕЙТИНГ  -->
-                    <div class="box_star">
-                        <div class="rating rating_set">
-                            <div class="rating_body">
-                                <div class="rating_active"></div>
-                                <div class="rating_items">
-                                    <input type="radio" class="rating_item" value="1" name="rating">
-                                    <input type="radio" class="rating_item" value="2" name="rating">
-                                    <input type="radio" class="rating_item" value="3" name="rating">
-                                    <input type="radio" class="rating_item" value="4" name="rating">
-                                    <input type="radio" class="rating_item" value="5" name="rating">
-                                </div>
-                            </div>
-                            <div class="rating_value"></div>
-                        </div>
-                        <div class="numb-review">
-                            5 отзывов
-                        </div>
-                    </div>
-
-                    <div class="price">
-                        1 006 ₽/шт
-                    </div>
+            <div class="price">
+                {{ product.price }} {% trans '₽/шт' %}
+            </div>
+            {% if request.user.is_authenticated %}
+                <form action="{% url 'order:add_item' %}" id="AddCart">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ product.id }}" name="product_id">
                     <button type="submit" class="addToBasket">{% trans 'Добавить в корзину' %}</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+
+    <!--    ************************************************** ОПИСАНИЕ, ХАРАКТЕРИСТИКИ, ОТЗЫВЫ -->
+    <div class="info-block">
+        <div class="info-block-titles">
+            <div class="info-block-title-desc" onclick="selectDesc()">
+                {% trans 'Описание' %}
+            </div>
+            <div class="info-block-title-review" onclick="selectReview()">
+                {% trans 'Отзывы' %}
+            </div>
+        </div>
+
+
+        <!--********************************************************* Раздел описание-->
+
+        <div class="product-info-description">
+            <div class="product-info-title">
+                {% trans 'Описание' %}
+            </div>
+            <div class="info-desc">
+                {{ product.description|safe }}
+            </div>
+        </div>
+
+
+        <!--                ********************************************************* Раздел БЛОК ОТЗЫВОВ-->
+        <div class="product-info-review">
+            <div class="product-info-title">
+                {% trans 'Отзывы' %}
+            </div>
+
+
+            <div class="rating-block-1">
+
+                <div class="product-rating">
+                    <div class="rating-numb">
+                        <p>{{ product.avg_rate }}</p>
+                        <img class="rating-star" src="{% static 'product/star.svg' %}" alt="star">
+                    </div>
+                    <div class="rating-text">
+                        {% trans 'На основе' %} {{ product.review_count }} {% trans 'оценок' %}
+                    </div>
+                </div>
+
+                <div class="send-review">
+                    <div class="rating-text">{% trans 'Поставьте товару от 1 до 5 звёзд' %}</div>
+
+
+                    <form class="form" enctype="multipart/form-data" method="post" id="CommentFrom"
+                          action="{% url 'catalog:product' product.id %}">
+                        {% csrf_token %}
+                        <div class="box_star">
+                            <div class="rating rating_set">
+                                <div class="rating_body">
+                                    <div class="rating_active"></div>
+                                    <div class="rating_items">
+                                        <input type="radio" class="rating_item cursor" value="1" name="rating">
+                                        <input type="radio" class="rating_item cursor" value="2" name="rating">
+                                        <input type="radio" class="rating_item cursor" value="3" name="rating">
+                                        <input type="radio" class="rating_item cursor" value="4" name="rating">
+                                        <input type="radio" class="rating_item cursor" value="5" name="rating">
+                                    </div>
+                                </div>
+                                <div class="rating_value"></div>
+                            </div>
+                        </div>
+                        <textarea name="text" id="comment" placeholder="Оставьте ваш отзыв" class="form_comment _req"
+                                  data-aos="fade-left"></textarea>
+                        <button id="submitApplication" class="addToBasket" type="submit"
+                                data-aos="fade-up">{% trans 'Отправить' %}</button>
+                    </form>
                 </div>
             </div>
 
-            <!--    ************************************************** ОПИСАНИЕ, ХАРАКТЕРИСТИКИ, ОТЗЫВЫ -->
-            <div class="info-block">
-                <div class="info-block-titles">
-                    <div class="info-block-title-desc" onclick="selectDesc()">
-                        {% trans 'Описание' %}
-                    </div>
-                    <div class="info-block-title-review" onclick="selectReview()">
-                        {% trans 'Отзывы' %}
-                    </div>
-                </div>
-
-
-                <!--********************************************************* Раздел описание-->
-
-                <div class="product-info-description">
-                    <div class="product-info-title">
-                        {% trans 'Описание' %}
-                    </div>
-                    <div class="info-desc">
-                        Лопата штыковая Fiskars Solid используется при работе с грунтом  — для вскапывания и разрыхления земли. Удобство работы обеспечивает эргономичная рукоятка. Рабочая часть инструмента остроконечная, изготовлена из стали. Страна производства — Россия.
-                    </div>
-                </div>
-
-
-<!--                ********************************************************* Раздел БЛОК ОТЗЫВОВ-->
-                    <div class="product-info-review">
-                        <div class="product-info-title">
-                            {% trans 'Отзывы' %}
-                        </div>
-
-
-                        <div class="rating-block-1">
-
-                            <div class="product-rating">
-                                <div class="rating-numb">
-                                    <p>4</p>
-                                    <img class="rating-star" src="static/product/star.svg" alt="star">
+            <div class="user-comments">
+                {% for commnet in comments %}
+                    <div class="user-comment">
+                        <div class="comment-info">
+                            <div class="rating-block-2">
+                                <div class="comment-username">
+{#                                    {{ commnet.user.last_name }} {{ commnet.user.first_name }}#}
+                                    {{ commnet.user.username }}
                                 </div>
-                                <div class="rating-text">
-                                    {% trans 'На основе' %} 5 {% trans 'оценок' %}
-                                </div>
-                            </div>
-
-                            <div class="send-review">
-                                <div class="rating-text">{% trans 'Поставьте товару от 1 до 5 звёзд' %}</div>
-
-                                <div class="box_star">
-                                    <div class="rating rating_set">
-                                        <div class="rating_body">
-                                            <div class="rating_active"></div>
-                                            <div class="rating_items">
-                                                <input type="radio" class="rating_item cursor" value="1" name="rating">
-                                                <input type="radio" class="rating_item cursor" value="2" name="rating">
-                                                <input type="radio" class="rating_item cursor" value="3" name="rating">
-                                                <input type="radio" class="rating_item cursor" value="4" name="rating">
-                                                <input type="radio" class="rating_item cursor" value="5" name="rating">
-                                            </div>
-                                        </div>
-                                        <div class="rating_value"></div>
-                                    </div>
-                                </div>
-
-                                <form class="form" action="#" enctype="multipart/form-data" method="post">
-                                    <textarea name="text"  id="comment" placeholder="Оставьте ваш отзыв" class="form_comment _req" data-aos="fade-left"></textarea>
-                                    <button id="submitApplication" class="addToBasket" type="submit" data-aos="fade-up">{% trans 'Отправить' %}</button>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="user-comments">
-                            <div class="user-comment">
-                                <div class="comment-info">
-                                    <div class="rating-block-2">
-                                    <div class="comment-username">
-                                        Руслан
-                                    </div>
-                                    <div class="comment-rating">
-                                        <div class="box_star">
-                                            <div class="rating rating_set">
-                                                <div class="rating_body">
-                                                    <div class="rating_active"></div>
-                                                    <div class="rating_items">
-                                                        <input type="radio" class="rating_item " value="1" name="rating">
-                                                        <input type="radio" class="rating_item " value="2" name="rating">
-                                                        <input type="radio" class="rating_item " value="3" name="rating">
-                                                        <input type="radio" class="rating_item " value="4" name="rating">
-                                                        <input type="radio" class="rating_item " value="5" name="rating">
-                                                    </div>
+                                <div class="comment-rating">
+                                    <div class="box_star cursor-none">
+                                        <div class="rating rating_set">
+                                            <div class="rating_body">
+                                                <div class="rating_active"></div>
+                                                <div class="rating_items">
+                                                    <input type="radio" class="rating_item " value="1" name="rating">
+                                                    <input type="radio" class="rating_item " value="2" name="rating">
+                                                    <input type="radio" class="rating_item " value="3" name="rating">
+                                                    <input type="radio" class="rating_item " value="4" name="rating">
+                                                    <input type="radio" class="rating_item " value="5" name="rating">
                                                 </div>
-                                                <div class="rating_value"></div>
                                             </div>
+                                            <div class="rating_value">{{ commnet.rate }}</div>
                                         </div>
                                     </div>
-                                    </div>
-                                    <div class="comment-date">
-                                        3 января 2021
-                                    </div>
-                                </div>
-                                <div class="comment-text">
-                                    С инструментом данного бренда знаком давно, поэтому и приобрел данную лопату, так сказать по старой дружбе. После непродолжительной работы по перекопке целины, оторвался метал в месте сварного шва, где соединяется черенок с лопатой, вот лежит она уже год и не знаю что с ней делать, попробовать заварить или в металлолом сдать. В целом если земля не плотная и сильно не нагружать то прослужит долго.
                                 </div>
                             </div>
+                            <div class="comment-date">
+                                {{ commnet.date }}
+                            </div>
                         </div>
-
+                        <div class="comment-text">
+                            {{ commnet.text }}
+                        </div>
                     </div>
+                {% endfor %}
+            </div>
+
+        </div>
 
 
-                    </div>
+    </div>
 {% endblock %}
 
 {% block script %}
     {{ block.super }}
-<script src="{% static 'product/product.js' %}"></script>
-<script src="{% static 'rating.js' %}"></script>
+    <script src="{% static 'js/comment.js' %}"></script>
+    <script src="{% static 'product/product.js' %}"></script>
+    <script src="{% static 'rating.js' %}"></script>
 {% endblock %}

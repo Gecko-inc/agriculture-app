@@ -1,12 +1,13 @@
 from django.contrib import admin
-from .models import Section, Article
+from .models import News, License
+from modeltranslation.admin import TabbedTranslationAdmin
 
 
-@admin.register(Article)
-class ArticleAdmin(admin.ModelAdmin):
-    pass
+@admin.register(News)
+class ArticleAdmin(TabbedTranslationAdmin):
+    prepopulated_fields = {'slug': ('title',)}
 
 
-@admin.register(Section)
-class SectionAdmin(admin.ModelAdmin):
+@admin.register(License)
+class LicenseAdmin(TabbedTranslationAdmin):
     pass

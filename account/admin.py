@@ -13,7 +13,7 @@ class PersonAdmin(UserAdmin):
     list_display_links = ('username',)
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        (_("Основная информация"), {'fields': ('email', 'status')}),
+        (_("Основная информация"), {'fields': ('first_name', 'last_name')}),
         (_("Статус"), {'fields': ('is_active', 'is_staff', 'is_superuser',), }),
         (_("Дополнительная информация"), {'fields': ('last_login', 'date_joined')}),
         (_("Привилегии"), {'fields': ('groups', )}),

@@ -15,6 +15,9 @@
     color: #4FAE3C;
 }
 
+.cursor-none {
+    pointer-events: none;
+}
 
 .product-block {
     display: grid;

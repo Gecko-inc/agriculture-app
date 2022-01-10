@@ -1,26 +1,34 @@
 {% extends 'base.html' %}
 {% load static i18n %}
-    {% block title %}<title>Вход</title>{% endblock %}
+{% block title %}<title>Вход</title>{% endblock %}
 {% block style %}
-{{ block.super }}
-    <link type="text/css" href = "{% static 'auth/auth.css' %}" rel = "stylesheet">
+    {{ block.super }}
+    <link type="text/css" href="{% static 'auth/auth.css' %}" rel="stylesheet">
 {% endblock %}
 
-        {% block content %}
-            <!--                *******************************************  ОФОРМЛЕНИЕ ЗАКАЗА-->
-            <div class="title">
-                {% trans 'Вход' %}
-            </div>
+{% block content %}
+    <!--                *******************************************  ОФОРМЛЕНИЕ ЗАКАЗА-->
+    <div class="title">
+        {% trans 'Вход' %}
+    </div>
+ <form method="post" >
+    {% csrf_token %}
+    {{ form.username }}
+        {{ form.password }}
+    <input type="submit">
+</form>
+{#    <form id="authForm" action="#" enctype="multipart/form-data" method="post" class="auth-order-form">#}
+{#        {% csrf_token %}#}
 
-            <form id="authForm" action="#" enctype="multipart/form-data" method="post" class="auth-order-form">
-                <input type="email" name="email"  placeholder="Электронная почта" class="auth-form_email _req _email">
-                <input type="password" name="password1"  placeholder="Пароль" class="password _req">
-                <button id="auth-Button" class="auth-orderButton" type="submit">{% trans 'Вход' %}</button>
-            </form>
+        {#                <input type="email" name="email"  placeholder="Электронная почта" class="auth-form_email _req _email">#}
+        {#                <input type="password" name="password1"  placeholder="Пароль" class="password _req">#}
+{#        <button id="auth-Button" class="auth-orderButton" type="submit">{% trans 'Вход' %}</button>#}
+{#        <input type="submit">#}
+{#    </form>#}
 
-  {% endblock %}
+{% endblock %}
 
 {% block script %}
-{{ block.super }}
-<script src="{% static 'auth/auth.js' %}"></script>
+    {{ block.super }}
+    <script src="{% static 'auth/auth.js' %}"></script>
 {% endblock %}

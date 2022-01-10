@@ -21,7 +21,7 @@
                     {% trans 'Адрес' %}
                 </div>
                 <div class="contact-info">
-                    Г. Псков, пл. Ленина, 94
+                    {{ cfg.address }}
                 </div>
             </div>
         </div>
@@ -32,8 +32,8 @@
                     {% trans 'Электронная почта' %}
                 </div>
                 <div class="contact-info">
-                    <a href="mailto:selhozinstrument@mail.ru">
-                        selhozinstrument@mail.ru
+                    <a href="mailto:{{ cfg.email }}">
+                        {{ cfg.email }}
                     </a>
                 </div>
             </div>
@@ -45,8 +45,8 @@
                     {% trans 'Телефон' %}
                 </div>
                 <div class="contact-info">
-                    <a href="tel:+78001205840">
-                        +7 800 120-58-40
+                    <a href="tel:{{ cfg.phone }}">
+                        {{ cfg.phone }}
                     </a>
                 </div>
             </div>

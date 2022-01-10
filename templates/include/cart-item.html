@@ -1,0 +1,20 @@
+{% load static i18n %}
+
+{% for item in cart.cart_item.all %}
+    <div class="basket-product">
+        <img class="basket-photo" src="{{ item.product.image.url }}">
+        <div class="basket-text">
+            <div class="basket-title">{{ item.product.title }}</div>
+            <div class="basket-article">{{ item.product.article }}</div>
+            <p class="basket-title del ButtonDelete" id="{{ item.id }}">{% trans 'Удалить из корзины' %}</p>
+        </div>
+        <div class="basket-count">
+            <img src="{% static 'basket/minus.svg' %}" alt="minus" class="ButtonMinus" id="{{ item.id }}">
+            <p class="basket-title">{{ item.quantity }}</p>
+            <img src="{% static 'basket/plus.svg' %}" alt="plus" class="ButtonPlus" id="{{ item.id }}">
+        </div>
+        <div class="basket-prise">
+            <p>{{ item.total }} {% trans '₽' %}</p>
+        </div>
+    </div>
+{% endfor %}

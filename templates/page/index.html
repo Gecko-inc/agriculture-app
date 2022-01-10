@@ -6,30 +6,26 @@
 </div>
 
 <div class="products">
-    <div class="product">
-        <img class="product-img" src="static/shovel.svg" alt="t">
-        <p class="product-title">Лопаты</p>
+{% for category in categories %}
+    <a href="?category={{ category.id }}#products">
+    <div class="product" id="{{ category.id }}">
+        <img class="product-img" src="{{ category.image.url }}" alt="t">
+        <p class="product-title">{{ category.title }}</p>
     </div>
-    <div class="product">
-        <img class="product-img" src="static/rake.svg" alt="t">
-        <p class="product-title">Грабли</p>
-    </div>
-    <div class="product">
-        <img class="product-img" src="static/pitchfork.svg" alt="t">
-        <p class="product-title">Вилы</p>
-    </div>
-    <div class="product">
-        <img class="product-img" src="static/beekeeping.svg" alt="t">
-        <p class="product-title">Пчеловодство</p>
-    </div>
+    </a>
+{% endfor %}
 </div>
 
 
 <!--    ******************************************* СПИСОК ТОВАРОВ-->
+    <a name="products"></a>
+{% include 'include/product-include.html' with product_list=products count=products_count %}
 
-{% include 'include/product-include.html' %}
 
-
+{% endblock %}
+{% block script %}
+    {{ block.super }}
+    <script src="{% static 'js/tab.js' %}"></script>
 {% endblock %}
 
 

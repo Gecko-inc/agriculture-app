@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('slug', models.CharField(help_text='Заполняется автоматически', max_length=130, verbose_name='URL адрес')),
                 ('short_description', models.TextField(blank=True, max_length=500, verbose_name='Краткое описание')),
                 ('text', ckeditor_uploader.fields.RichTextUploadingField(blank=True, verbose_name='Текст публикации')),
-                ('image', models.ImageField(blank=True, upload_to=config.views.get_upload_to, verbose_name='Изображение')),
+                ('image', models.ImageField(blank=True, upload_to=config.core.get_upload_to, verbose_name='Изображение')),
                 ('is_active', models.BooleanField(default=False, verbose_name='Активна')),
             ],
             options={
@@ -50,7 +50,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(blank=True, max_length=130, verbose_name='Заголовок')),
-                ('image', models.ImageField(upload_to=config.views.get_upload_to, verbose_name='Изображение')),
+                ('image', models.ImageField(upload_to=config.core.get_upload_to, verbose_name='Изображение')),
                 ('article', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='section.article', verbose_name='Статья')),
             ],
         ),

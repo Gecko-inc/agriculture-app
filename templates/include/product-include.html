@@ -3,17 +3,20 @@
     {% trans 'Список товаров' %}
 </div>
 <div class="one-product-desc numb-products">
-    {% trans 'Найдено' %} 5 {% trans 'товаров' %}:
+    {% trans 'Найдено' %} {{ count }} {% trans 'товаров' %}:
 </div>
 <div class="products-list">
-    <div class="one-product">
-        <img class="one-product-img" src="{% static 'shovel-sample.svg' %}" alt="product">
-        <p class="one-product-art">Арт. 81955972</p>
-        <p class="one-product-desc">Лопата для земляных работ Fiskars SolidTM, 120 см сталь, с черенком
+    {% for product in product_list %}
+        <a href="{% url 'catalog:product' product.id %}">
+        <div class="one-product">
+        <img class="one-product-img" src="{{ product.image.url }}" alt="product">
+        <p class="one-product-art">{{ product.article }}</p>
+        <p class="one-product-desc">{{ product.title }}
         </p>
-        <p class="one-product-price">816 ₽/шт </p>
+        <p class="one-product-price">{{ product.price }} {% trans '₽/шт' %} </p>
     </div>
-
+        </a>
+{% endfor %}
 </div>
 
-{% include 'include/pagination.html' %}
+{% include 'include/pagination.html' with items=product_list anchor="#products" %}

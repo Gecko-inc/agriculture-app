@@ -1,20 +1,27 @@
-{% load static %}
-<div class="scrollGoods">
-    <div class="scroll">
-        <div class="number-page">
-            <div class="this-page">
-                1
+{% load static i18n %}
+{{ category }}
+{% if items.paginator.num_pages > 1 %}
+    <div class="scrollGoods">
+        <div class="scroll">
+            <div class="number-page">
+                <div class="this-page">
+                    {{ items.number }}
+                </div>
+                <div class="all-page">
+                    {% trans 'из' %} {{ items.paginator.num_pages }}
+                </div>
             </div>
-            <div class="all-page">
-                из 24
-            </div>
+            {% if items.has_previous %}
+                <a href="?page={{ items.previous_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{{ anchor }}" class="leftLink">
+                    <img src="{% static 'product/scroll-left.svg' %}" alt="left">
+                </a>
+            {% endif %}
+            {% if items.has_next %}
+                <a href="?page={{ items.next_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{{ anchor }}" class="rightLink">
+                    <img src="{% static 'product/scroll-right.svg' %}" alt="right">
+                </a>
+            {% endif %}
         </div>
-        <a href="" class="leftLink">
-            <img src="{% static 'product/scroll-left.svg' %}" alt="left">
-        </a>
-        <a href="" class="rightLink">
-            <img src="{% static 'product/scroll-right.svg' %}" alt="right">
-        </a>
-    </div>
 
-</div>
+    </div>
+{% endif %}

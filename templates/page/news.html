@@ -13,18 +13,21 @@
     </div>
 
     <div class="block-all-news">
+    {% for item in news %}
         <div class="block-news">
-            <img class="news-img" src="static/news/news1.png" alt="news">
+        {% if item.image %}
+            <img class="news-img" src="{{ item.image.url }}" alt="news">
+            {% endif %}
             <div class="block-news-date">
-                <p>10.09.2021</p>
+                <p>{{ item.date }}</p>
             </div>
-            <a href="" class="block-news-title">Поставка новой партии уже на этих выходных</a>
+            <a href="{% url 'section:news_detail' item.slug %}" class="block-news-title">{{ item.title }}</a>
         </div>
 
-
+{% endfor %}
     </div>
 
 
-    {% include 'include/pagination.html' %}
+    {% include 'include/pagination.html' with items=news %}
 {% endblock %}
 

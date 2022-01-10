@@ -12,38 +12,8 @@
     <div class="title">
         {% trans 'Корзина' %}
     </div>
-    <div class="basket-products">
-        <div class="basket-product">
-            <img class="basket-photo" src="static/product/image%209.jpg">
-            <div class="basket-text">
-                <div class="basket-title">Лопата штыковая Fiskars SolidTM 116 см сталь с черенком</div>
-                <div class="basket-article">Арт. 81955972</div>
-            </div>
-            <div class="basket-count">
-                <img src="static/basket/minus.svg" alt="minus">
-                <p class="basket-title">2</p>
-                <img src="static/basket/plus.svg" alt="plus">
-            </div>
-            <div class="basket-prise">
-                <p>2 012 ₽</p>
-            </div>
-        </div>
-
-        <div class="basket-product">
-            <img class="basket-photo" src="static/product/image%209.jpg">
-            <div class="basket-text">
-                <div class="basket-title">Лопата штыковая Fiskars SolidTM 116 см сталь с черенком</div>
-                <div class="basket-article">Арт. 81955972</div>
-            </div>
-            <div class="basket-count">
-                <img src="static/basket/minus.svg" alt="minus">
-                <p class="basket-title">2</p>
-                <img src="static/basket/plus.svg" alt="plus">
-            </div>
-            <div class="basket-prise">
-                <p>2 012 ₽</p>
-            </div>
-        </div>
+    <div class="basket-products" id="ItemList">
+        {% include "include/cart-item.html" with cart=cart %}
     </div>
 
 
@@ -51,14 +21,20 @@
         <div class="ordering-block-text">
             {% trans 'Сумма к оплате' %}:
         </div>
-        <div class="ordering-block-prise">
-            3 128 ₽
+        <div class="ordering-block-prise" id="CartTotal">
+            {{ cart.total }} ₽
         </div>
-        <button type="submit" class="ordering-block-button">{% trans 'Оформить заказ' %}</button>
-        <a href="" class="ordering-block-link">{% trans 'Вернуться к покупкам' %}</a>
+        <a href="{% url 'order:order' %}">
+            <button type="submit" class="ordering-block-button">{% trans 'Оформить заказ' %}</button>
+        </a>
+        <a href="/#products" class="ordering-block-link">{% trans 'Вернуться к покупкам' %}</a>
 
     </div>
 
+{% endblock %}
+{% block script %}
+{{ block.super }}
+    <script src="{% static 'js/cart.js' %}"></script>
 {% endblock %}
 
 

@@ -1,4 +1,8 @@
 {% load i18n static %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -46,9 +50,6 @@
                 {#                </div>#}
                 <div class="translation">
                     <div class="translation-language">{{ request.LANGUAGE_CODE }}</div>
-                    {% get_current_language as LANGUAGE_CODE %}
-                    {% get_available_languages as LANGUAGES %}
-                    {% get_language_info_list for LANGUAGES as languages %}
                     {% for language in languages %}
                         <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
                             <input name="next" type="hidden" value="{{ redirect_to }}">
@@ -68,7 +69,7 @@
 
             <div class="header_elements-right">
                 {% if request.user.is_authenticated %}
-                    <a class="basket" href="">
+                    <a class="basket" href="{% url 'order:cart' %}">
                         <img class="basket-img" src="{% static 'shopping-cart.svg' %}" alt="shopping-cart">
                         <div class="basket-text">{% trans 'Корзина' %}</div>
                     </a>
@@ -77,10 +78,10 @@
                     </a>
                 {% else %}
                     <!--                <div class="login-reg-block">-->
-                    <a class="basket" href="">
+                    <a class="basket" href="{% url 'account:registration' %}">
                         {% trans 'Зарегистрироваться' %}
                     </a>
-                    <a class="basket" href="">
+                    <a class="basket" href="{% url 'account:login' %}">
                         {% trans 'Войти' %}
                     </a>
                     <!--                </div>-->
@@ -106,26 +107,26 @@
                              onclick="catalogSelect()">
                     </div>
                     <div class="catalog-items">
-                        <a class="catalog-item" href="">— Лопаты</a>
-                        <a class="catalog-item" href="">— Грабли</a>
-                        <a class="catalog-item" href="">— Вилы</a>
-                        <a class="catalog-item" href="">— Для пчеловодства</a>
+
+                        {% for category in categories %}
+                        <a class="catalog-item" href="/?category={{ category.id }}#products">— {{ category.title }}</a>
+                        {% endfor %}
                     </div>
                 </div>
 
                 <div class="asideElement">
-                    <a href="" class="aside-link">
+                    <a href="{% url 'section:license' %}" class="aside-link">
                         {% trans 'Патенты и лицензии' %}
                     </a>
                 </div>
 
                 <div class="asideElement">
-                    <a href="" class="aside-link">
+                    <a href="{% url 'section:news' %}" class="aside-link">
                         {% trans 'Новости' %}
                     </a>
                 </div>
                 <div class="asideElement">
-                    <a href="" class="aside-link">
+                    <a href="{% url 'section:contacts' %}" class="aside-link">
                         {% trans 'Контакты' %}
                     </a>
                 </div>
@@ -154,23 +155,31 @@
                     <div class="social_networks">
                         <p>{% trans 'Мы в соцсетях' %}:</p>
                         <div class="social-net-Items">
-                            <a class="social-net-Item" href="">
+                    {% if cfg.vk %}
+                            <a class="social-net-Item" href="{{ cfg.inst }}vk">
                                 <img class="social-net-img" src="{% static 'vk.svg' %}" alt="vk">
                             </a>
-                            <a class="social-net-Item" href="">
+                            {% endif %}
+                    {% if cfg.ok %}
+                            <a class="social-net-Item" href="{{ cfg.ok }}">
                                 <img class="social-net-img" src="{% static 'ok.svg' %}" alt="ok">
                             </a>
-                            <a class="social-net-Item" href="">
+                        {% endif %}
+                    {% if cfg.fb %}
+                            <a class="social-net-Item" href="{{ cfg.fb }}">
                                 <img class="social-net-img" src="{% static 'fb.svg' %}" alt="fb">
                             </a>
-                            <a class="social-net-Item" href="">
+                        {% endif %}
+                    {% if cfg.inst %}
+                            <a class="social-net-Item" href="{{ cfg.inst }}">
                                 <img class="social-net-img" src="{% static 'inst.svg' %}" alt="inst">
                             </a>
+                        {% endif %}
                         </div>
                     </div>
 
                     <div class="linkBlock1">
-                        <a href="" class="footer_link2">{% trans 'НОВОСТИ' %}</a>
+                        <a href="{% url 'section:news' %}" class="footer_link2">{% trans 'НОВОСТИ' %}</a>
                     </div>
                 </div>
 
@@ -187,47 +196,52 @@
 
             <div class="footerElement2">
                 <div class="footer_catalog">
-                    <a href="" class="footer_link3">
+                    <a href="/#products" class="footer_link3">
                         {% trans 'КАТАЛОГ' %}
                     </a>
                     <div class="light_catalog-elements">
-                        <a href="" class="footer_catalog-element">— Лопаты</a>
-                        <a href="" class="footer_catalog-element">— Вилы</a>
-                        <a href="" class="footer_catalog-element">— Грабли</a>
-                        <a href="" class="footer_catalog-element">— Для пчеловодства</a>
+                        {% for category in categories %}
+                        <a href="/?category={{ category.id }}#products" class="footer_catalog-element">— {{ category.title }}</a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
 
             <div class="footerElement3">
                 <div class="footer_contacts">
-                    <a href="" class="footer_link4">{% trans 'Контакты' %}</a>
+                    <a href="{% url 'section:contacts' %}" class="footer_link4">{% trans 'Контакты' %}</a>
                 </div>
                 <div class="footer_contact-elements">
+                    {% if cfg.phone %}
                     <div class="contact_element">
                         <p class="light_catalog-elements">
                             {% trans 'Телефон в Пскове' %}:
                         </p>
-                        <a href="tel:+78001205840">
-                            +7 800 120-58-40
+                        <a href="tel:{{ cfg.phone }}">
+                            {{ cfg.phone }}
                         </a>
                     </div>
+                    {% endif %}
+                {% if cfg.email %}
                     <div class="contact_element">
                         <p class="light_catalog-elements">
                             {% trans 'Электронная почта' %}:
                         </p>
-                        <a href="mailto:selhozinstrument@mail.ru">
-                            selhozinstrument@mail.ru
+                        <a href="mailto:{{ cfg.email }}">
+                            {{ cfg.email }}
                         </a>
                     </div>
+                {% endif %}
+                {% if cfg.address %}
                     <div class="contact_element">
                         <p class="light_catalog-elements">
                             {% trans 'Адрес' %}:
                         </p>
                         <p>
-                            Г. Псков, пл. Ленина, 94
+                            {{ cfg.address }}
                         </p>
                     </div>
+                {% endif %}
 
                 </div>
             </div>
@@ -235,6 +249,7 @@
     </footer>
 </div>
 {% block script %}
+    <script src="/assets/js/jquery-3.5.1.min.js"></script>.
     <script src="{% static 'index.js' %}"></script>
 {% endblock %}
 </body>

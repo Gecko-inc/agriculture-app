@@ -1,4 +1,10 @@
-
+.del {
+    color: #6C786A;
+    cursor: pointer;
+}
+.del:hover {
+    color: #4FAE3C;
+}
 
 .basket-products {
     display: flex;

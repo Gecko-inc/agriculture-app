@@ -1,33 +1,37 @@
 {% extends 'base.html' %}
 {% load static i18n %}
+
+
+{% block title %} <title>{{ news.title }}</title> {% endblock %}
 {% block style %}
     {{ block.super }}
   <link type="text/css" href = "{% static 'one-news/one-news.css' %}" rel = "stylesheet">
 {% endblock %}
 {% block content %}
-    <div class="content" >
       <!--                *******************************************  -->
 
       <div class="news-bread-crumbs">
-        <a href="" class="news-bread-crumb-link">
+        <a href="{% url 'section:news' %}" class="news-bread-crumb-link">
           Назад
         </a>
       </div>
 
       <div class="title">
-        Временное закрытие!
+        {{ news.title }}
       </div>
 
       <div class="one-news-date">
         <p>
-          10.09.2021
+          {{ news.date }}
         </p>
       </div>
 
       <div class="new-text">
-        <img class="one-news-img" src="static/one-news/one-news.png" alt="news-photo">
+      {% if news.image %}
+        <img class="one-news-img" src="{{ news.image.url }}" alt="news-photo">
+          {% endif %}
         <p>
-          На фоне эпидемиологической обстановки магазин вынужден закрыться на период с 28.03.2020 до 30.04.2020.
+            {{ news.text|safe}}
         </p>
       </div>
 
@@ -35,5 +39,5 @@
 
 
 
-      </div>
 
+{% endblock %}

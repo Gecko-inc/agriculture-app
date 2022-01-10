@@ -1,15 +1,5 @@
+from catalog.models import Category
 from .models import Config
-
-
-def get_upload_to(instance, filename) -> str:
-    """
-      Returns the path to the media
-    """
-    try:
-        return f'{instance.IMAGE_PATH}/{instance.id}/{filename}'
-    except Exception:
-        # TODO: Exception?
-        return f'upload/{instance.id}/{filename}'
 
 
 def common_context() -> dict:
@@ -18,4 +8,6 @@ def common_context() -> dict:
     """
     context = dict()
     context['cfg'] = Config.get_cfg()
+    categories = Category.objects.filter(is_active=True)
+    context['categories'] = categories
     return context

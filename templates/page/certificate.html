@@ -8,20 +8,23 @@
     <link type="text/css" href="{% static 'certificate/certificate.css' %}" rel="stylesheet">
 {% endblock %}
 <!--                *******************************************  -->
+{% block content %}
 <div class="title">
     {% trans 'Патенты и лицензии' %}
 </div>
 
 <div class="certificates">
+    {% for item in license %}
     <div class="certificate">
         <p class="certificate-title">
-            SVG групп Сертификат ИСМ стр. SVG групп 20.03.2018
+            {{ item.title }}
         </p>
-        <img class="certificate-img" src="static/certificate/certificate.jpg" alt="certificate">
+        <img class="certificate-img" src="{{ item.image.url }}" alt="certificate">
     </div>
+    {% endfor %}
 </div>
 
-
+{% endblock %}
 
 
 
