@@ -1,0 +1,311 @@
+@media screen and (max-width: 991px) {
+
+    html {
+        scroll-padding-top: 63px;
+    }
+
+    .wrapper {
+        background: transparent;
+    }
+
+    .header_elements {
+        display: none;
+    }
+
+    .aside {
+        display: none;
+    }
+
+    .main {
+        background: #F8F9F7;
+    }
+
+    header {
+        height: 65px;
+        padding: 0 4%;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .content {
+        width: 100%;
+        float: none;
+        padding-left: 0;
+        margin-bottom: 100px;
+    }
+
+    .burger-menu {
+        display: block;
+        right: 0;
+        top: 0;
+        position: relative;
+        width: 25px;
+        height: 20px;
+    }
+
+    .mobile-icon, .translation-mobile {
+        display: block;
+    }
+    .mobile-header-right {
+        display: flex;
+        flex-direction: row;
+        column-gap: 35px;
+    }
+
+    /*++++++++++++++ КНОПКА ++++++++++++*/
+    #burger-menu_button {
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: flex-end;
+        z-index: 30;
+    }
+
+    #burger-menu_line1, #burger-menu_line2, #burger-menu_line3 {
+        height: 2px;
+        background-color: #6C786A;
+        border-radius: 8px;
+    }
+
+    #burger-menu_line1 {
+        width: 100%;
+    }
+
+    #burger-menu_line2 {
+        width: 100%;
+    }
+
+    #burger-menu_line3 {
+        width: 100%;
+    }
+
+
+    /*++++++++++++++ КНОПКА В АКТИВНОМ СОСТОЯНИИ++++++++++++*/
+    #burger-menu_button.active header {
+        position: relative;
+        background-color: #DCE7D1;
+    }
+
+    #burger-menu_line1.active {
+        background-color: #4FAE3C;
+    }
+
+    #burger-menu_line2.active {
+        background-color: #4FAE3C;
+    }
+
+    #burger-menu_line3.active {
+        background-color: #4FAE3C;
+    }
+
+    header.active-mobile-header {
+        background: #DCE7D1;
+    }
+
+
+    /*++++++++++++++ МЕНЮ НАВИГАЦИИ ++++++++++++*/
+    .link__logo-name {
+        width: auto;
+        white-space: normal;
+    }
+    body.active {
+        overflow: hidden;
+    }
+
+    .asideElement {
+        width: 100%;
+    }
+    .catalog-item:hover, .aside-link:hover {
+        color: #6C786A;
+    }
+
+
+    #burger-menu_nav {
+        font-size: 18px;
+        color: #343434;
+        position: fixed;
+        z-index: 20;
+        /*background-color: rgba(24,32,67,1);*/
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow-y: auto;
+        top: 65px;
+        left: -100%;
+        width: 100%;
+        gap: 35px;
+        transition: 0.5s;
+        padding-top: 20px;
+    }
+
+    #burger-menu_nav.active {
+        left: 0;
+        box-sizing: border-box;
+        padding-left: 4%;
+        padding-right: 4%;
+        background-color: #DCE7D1;
+    }
+
+    .burger-menu_link {
+
+        text-decoration: none;
+        color: white;
+    }
+
+    .burger-menu_link:hover {
+        color: #ACACAC;
+    }
+
+
+
+    /*-------------------------------------- Язык*/
+
+
+    .translation-mobile{
+        text-transform: uppercase;
+        color: #6C786A;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+    }
+    .m-select {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        column-gap: 10px;
+        align-items: center;
+    }
+    .m-select.m-is-active .m-select-body{
+        display: none;
+    }
+    .m-select-header {
+        cursor: pointer;
+    }
+    .m-select-header.m-active {
+        transform: rotate(180deg);
+    }
+
+
+    .m-select-body {
+        z-index: 20;
+        cursor: pointer;
+        /*background-color: #e0dfdf63;*/
+        position: absolute;
+        width: 60px;
+        border-radius: 6px;
+        left: 90%;
+        transform: translateX(-50%);
+        top: 27px;
+        display: block;
+    }
+    .m-select-body-style{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .m-select-item{
+        /*margin: 6px;*/
+        /*border-bottom: 1.5px solid rgba(108, 120, 106, 0.5);*/
+    }
+    .m-select-item:hover{
+        /*color: #343434;*/
+        /*border-bottom: 2px solid #343434;*/
+    }
+
+    .m-translation-language, .buttonLenguage {
+        font-weight: 400;
+    }
+    .buttonLenguage {
+        font-family: inter;
+        color: #6C786A;
+        font-size: 16px;
+        border: none;
+        background: transparent;
+        margin: 6px;
+        border-bottom: 1.5px solid rgba(108, 120, 106, 0.5);
+    }
+
+    .buttonLenguage:hover {
+        color: #343434;
+        border-bottom: 2px solid #343434;
+    }
+
+
+
+}
+
+@media screen and (max-width: 600px) {
+
+    html {
+        scroll-padding-top: 45px;
+    }
+
+    footer {
+        background: #DCE7D1;
+    }
+    /*    ----------------------------------------- Футер */
+    .footer-elements {
+        display: none;
+    }
+    .footer-mobile {
+        font-size: 16px;
+        display: block;
+        padding: 45px 4%;
+    }
+    .newsFollow {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .social_networks {
+        margin: 30px 0;
+        width: 100%;
+    }
+    .social-net-Items {
+        flex-wrap: wrap;
+        row-gap: 15px;
+    }
+
+    .catalog-items-footer {
+        display: block;
+    }
+    .catalog-items-footer.catalog-active-footer{
+        display: none;
+    }
+
+    .catalog-header-footer {
+        cursor: pointer;
+        transform: rotate(180deg);
+    }
+    .catalog-header-footer.a {
+        transform: rotate(0deg);
+    }
+    .aside-link {
+        font-size: 16px;
+    }
+    .catalog-item{
+        font-size: 14px;
+    }
+    .footer_contact-elements {
+        padding-top: 20px;
+    }
+    .asideElement{
+        word-break: break-word;
+    }
+    .page-4.active {
+        width: 100%;
+    }
+
+    .site-feedback-link {
+        font-size: 12px;
+        width: 30px;
+        height: 120px;
+        top: 55%;
+    }
+}

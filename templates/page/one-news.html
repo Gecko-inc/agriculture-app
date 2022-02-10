@@ -2,42 +2,60 @@
 {% load static i18n %}
 
 
-{% block title %} <title>{{ news.title }}</title> {% endblock %}
+{% block title %} {{ news.title }} {% endblock %}
 {% block style %}
     {{ block.super }}
-  <link type="text/css" href = "{% static 'one-news/one-news.css' %}" rel = "stylesheet">
+    <link type="text/css" href="{% static 'one-news.css' %}" rel="stylesheet">
 {% endblock %}
 {% block content %}
-      <!--                *******************************************  -->
+    <!--                *******************************************  -->
 
-      <div class="news-bread-crumbs">
-        <a href="{% url 'section:news' %}" class="news-bread-crumb-link">
-          Назад
+    <div class="news-bread-crumbs">
+        <a href="/#news" class="news-bread-crumb-link">
+            {% trans 'Назад' %}
         </a>
-      </div>
+    </div>
 
-      <div class="title">
-        {{ news.title }}
-      </div>
+    <div class="one-news">
+        <div class="one-news-left">
+            <div class="news-title">
+                {{ news.title }}
+            </div>
+            <div class="one-news-date">
+                <p>
+                    {{ news.date }}
+                </p>
+            </div>
+            <div class="new-text">
+                <p>
+                    {{ news.short_description }}
+                </p>
+            </div>
+        </div>
 
-      <div class="one-news-date">
-        <p>
-          {{ news.date }}
-        </p>
-      </div>
+        <div class="one-news-right">
+            <img class="one-news-img" src="{{ news.image.url }}" alt="news-photo">
+        </div>
+    </div>
 
-      <div class="new-text">
-      {% if news.image %}
-        <img class="one-news-img" src="{{ news.image.url }}" alt="news-photo">
-          {% endif %}
-        <p>
-            {{ news.text|safe}}
-        </p>
-      </div>
+    <div class="new-text">
+        {{ news.text|safe }}
+    </div>
 
+    <a href="/#news" class="all-news-link">
+        {% trans 'Все новости' %}
+    </a>
 
-
-
+    <a href="/#feedback" class="site-feedback-link">
+        {% trans 'Оставить о сайте' %}
+    </a>
 
 
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'index.js' %}"></script>
 {% endblock %}

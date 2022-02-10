@@ -6,17 +6,20 @@
     {% trans 'Найдено' %} {{ count }} {% trans 'товаров' %}:
 </div>
 <div class="products-list">
+
+
     {% for product in product_list %}
-        <a href="{% url 'catalog:product' product.id %}">
         <div class="one-product">
         <img class="one-product-img" src="{{ product.image.url }}" alt="product">
         <p class="one-product-art">{{ product.article }}</p>
         <p class="one-product-desc">{{ product.title }}
         </p>
-        <p class="one-product-price">{{ product.price }} {% trans '₽/шт' %} </p>
+        <div class="more">
+            <a href="{% url 'catalog:product' product.id %}" class="one-product-art">Подробнее</a>
+            <img class="moreArrow" src="{% static 'arrowPodrobnee.svg' %}" alt="more">
+        </div>
     </div>
-        </a>
-{% endfor %}
+    {% endfor %}
 </div>
 
 {% include 'include/pagination.html' with items=product_list anchor="#products" %}

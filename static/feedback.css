@@ -1,0 +1,153 @@
+
+
+
+.reg-order-form {
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    gap: 40px;
+    /*width: 60%;*/
+    resize: vertical;
+    display: grid;
+}
+.reg-form_name {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+.reg-form_surname {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+.reg-form_phone {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+.reg-form_email {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.form_comment {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 3;
+}
+.reg-orderButton {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 4;
+    grid-row-end: 4;
+}
+.reg-form_name, .reg-form_phone, .reg-form_email, .reg-form_surname {
+    background: transparent;
+    /*height: 45px;*/
+    border-bottom: 1.5px solid #6C786A;
+    padding: 0 2% 2% 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: inherit;
+    color: #343434;
+}
+.reg-orderButton {
+    font-weight: 500;
+    font-size: 18px;
+    color: white;
+    font-family: inherit;
+    background-color: #4FAE3C;
+    border-radius: 8px;
+    border: none;
+    height: auto;
+    min-height: 60px;
+    word-break: break-word;
+    cursor: pointer;
+    width: 260px;
+}
+.reg-orderButton:hover{
+    box-shadow: 0 6px 10px 0 #B7CAD033;
+    border: 1px solid #E5E5E5;
+
+}
+
+.form_comment {
+    /*outline-color: rgba(108, 120, 106, 0.5);*/
+    /*outline-width: 1.5px;*/
+    /*font-family: inter;*/
+    /*font-weight: 400;*/
+    /*color: #343434;*/
+    /*font-size: 16px;*/
+    /*width: 100%;*/
+    /*resize: vertical;*/
+    /*height: 100px;*/
+    /*padding: 10px;*/
+    /*box-sizing: border-box;*/
+    /*border-radius: 10px;*/
+    /*border: 1.5px solid #E5E5E5;*/
+
+
+    padding-bottom: 2%;
+    font-family: inter;
+    font-weight: 400;
+    color: #343434;
+    font-size: 16px;
+    resize: none;
+    height: 30px;
+    max-height: 100px;
+    background: transparent;
+    border-bottom: 1.5px solid #6C786A;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    overflow-y: auto;
+    box-sizing: border-box;
+
+}
+
+textarea:active, :hover, :focus{
+    outline: 0;
+    outline-offset: 0;
+}
+
+.form_comment::-webkit-scrollbar {
+    width:  6px;
+}
+.form_comment::-webkit-scrollbar-track {
+    background: transparent;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 0;
+}
+.form_comment::-webkit-scrollbar-thumb {
+    background: #DFDFDF;
+    border-radius: 8px;
+    width:  6px;
+}
+
+
+.other-photo, .products {
+    padding-bottom: 10px;
+}
+.other-photo::-webkit-scrollbar, .products::-webkit-scrollbar {
+    height: 9px;
+
+}
+.other-photo::-webkit-scrollbar-track, .products::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 8px;
+}
+.other-photo::-webkit-scrollbar-thumb, .products::-webkit-scrollbar-thumb {
+    background: #DCE7D1;
+    border-radius: 8px;
+    height: 9px;
+}
+
+
+
+/*============================УДАЧНАЯ ОТПРАВКА ФОРМЫ*/
+

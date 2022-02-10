@@ -1,0 +1,556 @@
+@media screen and (max-width: 991px) {
+
+
+    .title {
+        padding: 65px 0 30px;
+        font-size: 32px;
+    }
+    .one-news {
+        padding: 65px 0 40px;
+        font-size: 32px;
+    }
+    .news-title {
+        font-size: 32px;
+    }
+
+
+/*    Страница выбранного товара*/
+    .product-description {
+        gap: 25px;
+    }
+    .product-title {
+        font-size: 20px;
+    }
+    /*.info-block {*/
+    /*    margin-top: 65px;*/
+    /*}*/
+    .product-info-title {
+        margin-top: 50px;
+    }
+
+    .characters {
+        width: 100%;
+    }
+    .one-news-left {
+        row-gap: 20px;
+    }
+
+    .news-bread-crumbs {
+        margin-top: 30px;
+    }
+
+
+    }
+
+@media screen and (max-width: 793px) {
+        /*----------------------------------------- футер */
+    .footerElement1{
+        width: 100%;
+    }
+    .footerElement1_1 {
+        justify-content: space-between;
+    }
+    .modal-wrap {
+        width: 85%;
+    }
+    .review-Button {
+        font-size: 16px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .content {
+        margin-bottom: 70px;
+    }
+    .title {
+        padding: 45px 0 30px;
+        font-size: 28px;
+    }
+    .one-news {
+        padding: 45px 0 30px;
+        font-size: 28px;
+        grid-template-columns: 1fr;
+        row-gap: 30px;
+    }
+    .news-title {
+        font-size: 28px;
+    }
+    .news-bread-crumbs {
+        font-size: 14px;
+        margin-top: 20px;
+    }
+
+
+
+    /*    ----------------------------------------- Скролл */
+    .showMore{
+        font-size: 14px;
+        width: 210px;
+        height: 50px;
+    }
+    .number-page{
+        font-size: 14px;
+    }
+    .this-page, .leftLink, .rightLink{
+        height: 35px;
+        width: 35px;
+    }
+    .scrollGoods {
+        justify-content: flex-end;
+        gap: 15px;
+    }
+
+    /*    ----------------------------------------- Каталог */
+    .products {
+        display: flex;
+        justify-content: flex-start;
+        height: auto;
+        width: 100%;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        /*box-shadow: 0 6px 10px 0 #B7CAD033;*/
+        border-radius: 10px;
+        /*border: 1px solid #E5E5E5;*/
+        gap: 20px;
+    }
+
+    .product {
+        /*box-shadow: 0 6px 10px 0 #B7CAD033;*/
+        border-radius: 10px;
+        border: 1px solid #E5E5E5;
+
+        height: auto;
+        width: 60%;
+        flex-shrink: 0;
+        scroll-snap-align:start;
+        scroll-snap-stop: normal;
+        box-sizing: border-box;
+
+        padding: 15px;
+        gap: 10px;
+
+        /*border: 0;*/
+        /*border-radius: 0;*/
+        box-shadow: none;
+        font-size: 18px;
+    }
+
+    .product:hover {
+        box-shadow: none;
+    }
+    .product-img {
+        /*width: 120px;*/
+        /*height: 120px;*/
+
+        width: 100%;
+        height: auto;
+        max-width: 120px;
+        max-height: 120px;
+    }
+
+    /*.products::-webkit-scrollbar {*/
+    /*    height: 8px;*/
+    /*   */
+    /*}*/
+    /*.products::-webkit-scrollbar-track {*/
+    /*    background: transparent;*/
+    /*    border-radius: 4px;*/
+    /*}*/
+    /*.products::-webkit-scrollbar-thumb {*/
+    /*    background: #DFDFDF;*/
+    /*    border-radius: 4px;*/
+    /*    height: 8px;*/
+    /*}*/
+
+
+    /*<!--    ******************************************* СПИСОК ТОВАРОВ-->*/
+    .products-list {
+        display: grid;
+        grid-template-columns: repeat( auto-fit, minmax(150px, 1fr) );
+        gap: 20px;
+    }
+    .one-product {
+        max-width: 600px;
+        row-gap: 10px;
+    }
+    .one-product-img {
+        /*height: 120px;*/
+        /*width: 120px;*/
+    }
+    .one-product:hover {
+        box-shadow: 0 6px 10px 0 rgba(99, 109, 113, 0.2);}
+
+    .one-product-art {
+        font-size: 12px;
+    }
+    .one-product-desc {
+        font-size: 14px;
+    }
+    .one-product-price {
+        font-size: 16px;
+    }
+
+
+
+    /*    -----------------------------------------Новости */
+    .block-all-news {
+        display: grid;
+        grid-template-columns: 1fr;
+        /*grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );*/
+        row-gap: 30px;
+
+    }
+    .block-news{
+        font-size: 16px;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+    }
+    .block-news-date {
+        font-size: 12px;
+    }
+    .news-img{
+        min-width: 50px;
+    }
+
+
+    /*    ----------------------------------------- Обратная связь */
+    .reg-order-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .form_comment {
+        resize: vertical;
+    }
+    .reg-orderButton {
+        font-size: 16px;
+        width: 100%;
+    }
+
+
+    /*    -----------------------------------------Контакты */
+    .contact-title {
+        font-size: 16px;
+        word-break: break-word;
+    }
+    .contact-info {
+        font-size: 16px;
+        word-break: break-word;
+    }
+    .contacts-block {
+        row-gap: 30px;
+    }
+
+    /*    +++++++++++++++++++++++++++++++++ выбранный товар */
+    .product-description {
+        gap: 25px;
+    }
+    .product-title {
+        font-size: 16px;
+        word-break: break-word;
+    }
+
+    .product-info-title {
+        margin-top: 50px;
+    }
+    .article {
+        font-size: 14px;
+    }
+    .porod-numb {
+        font-size: 16px;
+    }
+    .product-photos {
+        gap: 20px;
+    }
+    .main-photo {
+
+    }
+    .other-photo {
+        justify-content: flex-start;
+    }
+    .small-photo, .small-video {
+        width: 80px;
+        height: 80px;
+    }
+    .other-photo {
+        gap: 20px;
+    }
+    .bread-crumbs {
+        margin: 45px 0;
+    }
+    .product-block {
+        display: flex;
+        flex-direction: column;
+    }
+    .box_star {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .bread-crumbs{
+        font-size: 16px;
+        word-break: break-word;
+    }
+
+
+/*  ++++++++++++++  Мобильная версия блоков о товаре */
+
+    .info-block {
+        display: none;
+    }
+    .info-block-mobile {
+        display: block;
+        margin-top: 45px;
+    }
+
+    .mobile-desc-container, .mobile-character-container, .mobile-certif-container, .mobile-extraInfo-container, .mobile-review-container {
+        display: none;
+    }
+    .mobile-desc-container.active, .mobile-character-container.active, .mobile-certif-container.active, .mobile-extraInfo-container.active, .mobile-review-container.active {
+        display: block;
+        padding-bottom: 20px;
+        font-size: 16px;
+        font-weight: 400;
+
+    }
+
+    .mobile-desc-arrow, .mobile-character-arrow, .mobile-certif-arrow, .mobile-extraInfo-arrow, .mobile-review-arrow {
+        cursor: pointer;
+        transform: rotate(0deg);
+    }
+    .mobile-desc-arrow.active, .mobile-character-arrow.active, .mobile-character-arrow.active, .mobile-extraInfo-arrow.active, .mobile-extraInfo-arrow.active {
+        transform: rotate(180deg);
+    }
+
+    .mobile-block-title {
+        cursor: pointer;
+        padding: 20px 0;
+        font-size: 16px;
+        display: flex;
+        font-weight: 500;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .characters {
+        gap: 15px;
+    }
+    .character {
+        border-bottom: 0;
+    }
+
+
+    .user-comments{
+        width: 100%;
+    }
+    .user-comment {
+        padding-bottom: 0;
+        padding-top: 20px;
+    }
+    .user-photos {
+        margin-top: 45px;
+    }
+    .other-photo {
+        gap: 15px;
+    }
+    .rating {
+        font-size: 28px;
+        line-height: 0.8;
+    }
+    .comment-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .rating-block-2 {
+        flex-wrap: wrap;
+        row-gap: 10px;
+        align-items: flex-end;
+    }
+    .rating-text {
+        font-size: 15px;
+    }
+    .rating-numb {
+        font-size: 24px;
+        gap: 10px;
+        margin-bottom: 5px;
+    }
+    .rating-star {
+        height: 24px;
+    }
+
+
+/*    Модальное окно отзыва*/
+    .modal-content {
+        background-color: #F8F9F7;
+        flex-direction: column;
+    }
+    .modal {
+        /*overflow-x: hidden;*/
+    }
+    .modal-wrap {
+        align-items: end;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border-radius: 0;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        padding: 20px 15px;
+        box-sizing: border-box;
+        background: #F8F9F7;
+    }
+    .close-modal {
+        position: absolute;
+    }
+    .modal-img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 20px;
+        border: 0;
+    }
+    .modal-content {
+        gap: 45px;
+        height: 100%;
+    }
+    .rating {
+        font-size: 45px;
+    }
+    .modal-content-right, .pages {
+        height: 100%;
+    }
+
+    .modal-button {
+        width: 100%;
+    }
+    .pages {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+
+
+
+/*    one news*/
+
+    .one-news-right {
+        max-width: 100%;
+    }
+    .one-news-left, .one-news {
+        row-gap: 20px;
+    }
+    .all-news-link {
+        width: 100%;
+        font-size: 16px;
+    }
+    .certificates a p {
+        font-size: 14px;
+    }
+    .sendFile-text {
+        font-size: 14px;
+    }
+    #sendFile-gallery img {
+        width: 120px;
+    }
+
+}
+
+@media screen and (max-width: 220px) {
+
+    .title, .news-title {
+        font-size: 18px;
+        word-break: break-word;
+    }
+    .block-news, .one-product, .footer-mobile {
+        word-break: break-word;
+    }
+    .followButton {
+        font-size: 12px;
+    }
+    .products-list {
+        grid-template-columns: 1fr;
+    }
+    .one-product-img {
+        height: auto;
+        width: 100%;
+    }
+    .product-title {
+        font-size: 14px;
+        word-break: break-word;
+    }
+    .products {
+        gap: 15px;
+    }
+    .one-product {
+        padding: 10px;
+    }
+    .mobile-header-right {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .logo {
+        flex-wrap: wrap;
+    }
+
+
+    .certif {
+        flex-wrap: wrap;
+    }
+    .rating {
+        font-size: 30px;
+        word-break: break-all;
+    }
+    .product-photos, .other-photo{
+        gap: 10px;
+    }
+    .other-photo {
+        padding-bottom: 0;
+    }
+    .small-photo, .small-video {
+        max-width: 50px;
+        max-height: 50px;
+    }
+    .product-description {
+        word-break: break-word;
+    }
+    .mobile-block-title,.footer-mobile, .buttonLenguage, .m-select, #burger-menu_nav.active, .catalog, .catalog-burger-items,
+    .porod-numb, .numb-review,
+    .mobile-desc-container.active, .mobile-character-container.active, .mobile-certif-container.active,
+    .mobile-extraInfo-container.active, .mobile-review-container.active, .review-Button, .user-comment, .comment-username, .modal-button, .all-back,
+    .one-news-date, .block-news, .contact-info {
+        font-size: 14px;
+    }
+    .bread-crumbs {
+        font-size: 12px;
+        margin: 45px 0 30px 0;
+    }
+    .product-description {
+        gap: 15px;
+    }
+    .modal-title {
+        font-size: 16px;
+    }
+
+    .new-text{
+        font-size: 12px;
+    }
+    .all-news-link {
+        font-size: 12px;
+    }
+    .certificates a p {
+        font-size: 14px;
+    }
+
+}
+

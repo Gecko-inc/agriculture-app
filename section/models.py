@@ -13,7 +13,7 @@ class News(models.Model):
     slug = models.CharField(_("URL адрес"), max_length=130, help_text=_("Заполняется автоматически"))
     short_description = models.TextField(_("Краткое описание"), max_length=500, blank=True)
     text = RichTextUploadingField(_('Текст публикации'), blank=True)
-    image = models.ImageField(_("Изображение"), upload_to=get_upload_to, blank=True)
+    image = models.ImageField(_("Изображение"), upload_to=get_upload_to, blank=False)
     date = models.DateField("Дата", default=timezone.now)
     is_active = models.BooleanField(_("Активна"), default=False)
 

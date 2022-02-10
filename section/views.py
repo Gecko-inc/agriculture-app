@@ -1,5 +1,6 @@
 from django.http import Http404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, DetailView
 
 from catalog.models import Category, Product
@@ -31,6 +32,30 @@ class Index(TemplateView):
             context['products_count'] = 0
         except ValueError:
             context['products_count'] = 0
+
+        # license
+        licence_list = License.objects.filter(is_active=True)
+        page_num = self.request.GET.get('licence_page', 1)
+        paginator = Paginator(licence_list, 6)
+        try:
+            licence = paginator.page(page_num)
+        except PageNotAnInteger:
+            licence = paginator.page(1)
+        except EmptyPage:
+            licence = paginator.page(paginator.num_pages)
+        context['license'] = licence
+
+        # news
+        item_list = News.objects.filter(is_active=True)
+        page_num = self.request.GET.get('news_page', 1)
+        paginator = Paginator(item_list, 6)
+        try:
+            news = paginator.page(page_num)
+        except PageNotAnInteger:
+            news = paginator.page(1)
+        except EmptyPage:
+            news = paginator.page(paginator.num_pages)
+        context['news'] = news
 
         return context
 

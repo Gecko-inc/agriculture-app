@@ -8,7 +8,7 @@ class ProductTrans(TranslationOptions):
         'article',
         'image',
         'description',
-        'price',
+        'file',
     ]
 
 

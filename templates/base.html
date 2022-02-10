@@ -3,16 +3,24 @@
 {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as languages %}
 
-<!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    {% block title %}
-        <title>Садовый интсрумент</title>
-    {% endblock %}
+    <title>{% block title %}{% trans 'Садовый интсрумент' %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block style %}
-        <link type="text/css" href="{% static 'index.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'index.css' %}" rel="stylesheet">
+    <link type="text/css" href = "{% static 'news.css' %}" rel = "stylesheet">
+    <link type="text/css" href = "{% static 'feedback.css' %}" rel = "stylesheet">
+    <link type="text/css" href = "{% static 'contacts.css' %}" rel = "stylesheet">
+    <link type="text/css" href = "{% static 'certificate.css' %}" rel = "stylesheet">
+    <link type="text/css" href = "{% static 'adaptability.css' %}" rel = "stylesheet">
+    <link type="text/css" href = "{% static 'adaptability-content.css' %}" rel = "stylesheet">
+
+
+    <link type="text/css" rel="stylesheet" href="{% static 'lightgallery/css/lightgallery.css' %}"/>
+    <!-- lightgallery plugins -->
+
     {% endblock %}
 </head>
 <body>
@@ -31,106 +39,207 @@
                 </div>
 
 
-                {#                <div class="translation">#}
-                {##}
-                {#                    <div class="select is-active">#}
-                {#                    <div class="translation-language">ru</div>#}
-
-
-                {#                        <img class="select-header" src="static/Vector.svg" alt="arrow">#}
-                {#                        <div class="select-body">#}
-                {#                            <div class="select-body-style">#}
-                {#                                <div class="select-item">ru</div>#}
-                {#                                <div class="select-item">en</div>#}
-                {#                                <div class="select-item">de</div>#}
-                {#                            </div>#}
-                {#                        </div>#}
-                {#                    </div>#}
-                {##}
-                {#                </div>#}
                 <div class="translation">
-                    <div class="translation-language">{{ request.LANGUAGE_CODE }}</div>
-                    {% for language in languages %}
-                        <form action="{% url 'set_language' %}" method="post" class="form-lang">{% csrf_token %}
-                            <input name="next" type="hidden" value="{{ redirect_to }}">
-                            <select class="custom-select" name="language" style="display: none;">
-                                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
-                                        selected{% endif %}>
-                                    {{ language.name_local }} ({{ language.code }})
-                                </option>
-                            </select>
-                            <button type="submit" class="buttonLenguage">
-                                {{ language.code }}
-                            </button>
-                        </form>
-                    {% endfor %}
+                    <div class="select is-active">
+                        <div class="translation-language">{{ request.LANGUAGE_CODE }}</div>
+                        <img class="select-header" src="{% static 'Vector.svg' %}" alt="arrow">
+                        <div class="select-body">
+                            <div class="select-body-style">
+                                {% for language in languages %}
+                                    <form action="{% url 'set_language' %}" method="post" class="select-item">
+                                        {% csrf_token %}
+                                        <input name="next" type="hidden" value="{{ redirect_to }}">
+                                        <select class="custom-select" name="language" style="display: none;">
+                                            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                                                    selected{% endif %}>
+                                                {{ language.name_local }} ({{ language.code }})
+                                            </option>
+                                        </select>
+                                        <button type="submit" class="buttonLenguage">{{ language.code }}
+                                        </button>
+                                    </form>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
             </div>
 
             <div class="header_elements-right">
-                {% if request.user.is_authenticated %}
-                    <a class="basket" href="{% url 'order:cart' %}">
-                        <img class="basket-img" src="{% static 'shopping-cart.svg' %}" alt="shopping-cart">
-                        <div class="basket-text">{% trans 'Корзина' %}</div>
+                <img src="{% static 'header-phone.svg' %}" alt="phone">
+                <div class="right-block">
+                    <a href="tel:{{ cfg.phone }}">
+                        {{ cfg.phone }}
                     </a>
-                    <a class="basket" href="{% url 'logout' %}">
-                        {% trans 'Выйти' %}
-                    </a>
-                {% else %}
-                    <!--                <div class="login-reg-block">-->
-                    <a class="basket" href="{% url 'account:registration' %}">
-                        {% trans 'Зарегистрироваться' %}
-                    </a>
-                    <a class="basket" href="{% url 'account:login' %}">
-                        {% trans 'Войти' %}
-                    </a>
-                    <!--                </div>-->
-                {% endif %}
+                    <p class="right-block-text">{% trans 'Псков' %}</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="burger-menu">
+            <div id="burger-menu_button" onclick="openMenu()">
+                <span id="burger-menu_line1"></span>
+                <span id="burger-menu_line2"></span>
+                <span id="burger-menu_line3"></span>
             </div>
 
+            <nav id="burger-menu_nav">
+                <div class="logo">
+                    <a class="link__logo-img" href="/">
+                        <img class="logo-img" src="{% static 'logo.svg' %}" alt="logo">
+                    </a>
+                    <a class="link__logo-name" href="/">
+                        {% trans 'Садовый инструмент' %}
+                    </a>
+                </div>
 
+                <div>
+                    <div class="asideElement">
+                        <div class="catalog">
+                            <a href="/#catalog" class="aside-link" onclick="closeMenu()">
+                                {% trans 'Каталог' %}
+                            </a>
+                            <img class="catalog-burger-header" src="{% static 'small-arrow.svg' %}" alt="arrow"
+                                 onclick="burgerCatalogSelect()">
+                        </div>
+                        <div class="catalog-burger-items">
+                            {% for category in categories %}
+                                <a class="catalog-item"
+                                   href="/?category={{ category.id }}#products">— {{ category.title }}</a>
+                            {% endfor %}
+                        </div>
+
+                        <div class="asideElement">
+                            <a href="/#cert" class="aside-link" onclick="closeMenu()">
+                                {% trans 'Патенты и лицензии' %}
+                            </a>
+                        </div>
+
+                        <div class="asideElement">
+                            <a href="/#news" class="aside-link" onclick="closeMenu()">
+                                {% trans 'Новости' %}
+                            </a>
+                        </div>
+                        <div class="asideElement">
+                            <a href="/#feedback" class="aside-link" onclick="closeMenu()">
+                                {% trans 'Обратная связь' %}
+                            </a>
+                        </div>
+                        <div class="asideElement">
+                            <a href="/#contacts" class="aside-link" onclick="closeMenu()">
+                                {% trans 'Контакты' %}
+                            </a>
+                        </div>
+                    </div>
+            </nav>
         </div>
+
+        <div class="mobile-header-right">
+            <div class="translation-mobile">
+                <div class="m-select m-is-active">
+                    <div class="m-translation-language">{{ request.LANGUAGE_CODE }}</div>
+                    <img class="m-select-header" src="{% static 'small-arrow.svg' %}" alt="arrow">
+                    <div class="m-select-body">
+                        <div class="m-select-body-style">
+                            {% for language in languages %}
+                                <form action="{% url 'set_language' %}" method="post" class="m-select-item">
+                                    {% csrf_token %}
+                                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                                    <select class="custom-select" name="language" style="display: none;">
+                                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                                                selected{% endif %}>
+                                            {{ language.name_local }} ({{ language.code }})
+                                        </option>
+                                    </select>
+                                    <button type="submit" class="buttonLenguage">{{ language.code }}
+                                    </button>
+                                </form>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="tel:{{ cfg.phone }}" class="mobile-icon">
+                <img src="{% static 'mobile-header-phone.svg' %}" alt="tel" class="mobile-header-img">
+            </a>
+        </div>
+
+
     </header>
+
+
+    <script>
+        function openMenu() {
+            document.getElementById("burger-menu_button").classList.toggle('active');
+            document.getElementById("burger-menu_line1").classList.toggle('active');
+            document.getElementById("burger-menu_line2").classList.toggle('active');
+            document.getElementById("burger-menu_line3").classList.toggle('active');
+            document.getElementById("burger-menu_nav").classList.toggle('active');
+            document.querySelector("body").classList.toggle('active');
+            document.querySelector("header").classList.toggle('active-mobile-header');
+
+
+        }
+    </script>
+    <script>
+        function closeMenu() {
+            document.getElementById("burger-menu_button").classList.remove('active');
+            document.getElementById("burger-menu_line1").classList.remove('active');
+            document.getElementById("burger-menu_line2").classList.remove('active');
+            document.getElementById("burger-menu_line3").classList.remove('active');
+            document.getElementById("burger-menu_nav").classList.remove('active');
+            document.querySelector("body").classList.toggle('active');
+            document.querySelector("header").classList.remove('active-mobile-header');
+        }
+    </script>
 
 
     <div class="main">
         <!--    *******************************************SIDEBAR-->
         <div class="aside">
             <div id="aside-block">
+                <nav>
+                    <div class="asideElement">
+                        <div class="catalog">
+                            <a href="/#catalog" class="aside-link">
+                                {% trans 'Каталог' %}
+                            </a>
+                            <img class="catalog-header" src="{% static 'Vector.svg' %}" alt="arrow"
+                                 onclick="catalogSelect()">
+                        </div>
+                        <div class="catalog-items">
+                            {% for category in categories %}
+                                <a class="catalog-item"
+                                   href="/?category={{ category.id }}#products">— {{ category.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
 
-                <div class="asideElement">
-                    <div class="catalog">
-                        <a href="" class="aside-link">
-                            {% trans 'Каталог' %}
+                    <div class="asideElement">
+                        <a href="/#cert" class="aside-link">
+                            {% trans 'Патенты и лицензии' %}
                         </a>
-                        <img class="catalog-header" src="{% static 'Vector.svg' %}" alt="arrow"
-                             onclick="catalogSelect()">
                     </div>
-                    <div class="catalog-items">
 
-                        {% for category in categories %}
-                        <a class="catalog-item" href="/?category={{ category.id }}#products">— {{ category.title }}</a>
-                        {% endfor %}
+                    <div class="asideElement">
+                        <a href="/#news" class="aside-link">
+                            {% trans 'Новости' %}
+                        </a>
                     </div>
-                </div>
-
-                <div class="asideElement">
-                    <a href="/license/" class="aside-link">
-                        {% trans 'Патенты и лицензии' %}
-                    </a>
-                </div>
-
-                <div class="asideElement">
-                    <a href="/news/" class="aside-link">
-                        {% trans 'Новости' %}
-                    </a>
-                </div>
-                <div class="asideElement">
-                    <a href="/contacts/" class="aside-link">
-                        {% trans 'Контакты' %}
-                    </a>
-                </div>
-
+                    <div class="asideElement">
+                        <a href="/#feedback" class="aside-link">
+                            {% trans 'Обратная связь' %}
+                        </a>
+                    </div>
+                    <div class="asideElement">
+                        <a href="/#contacts" class="aside-link">
+                            {% trans 'Контакты' %}
+                        </a>
+                    </div>
+                </nav>
             </div>
         </div>
 
@@ -148,46 +257,48 @@
     <!--    *******************************************FOOTER-->
     <footer>
         <div class="footer-elements">
-
             <div class="footerElement1">
-
                 <div class="footerElement1_1">
                     <div class="social_networks">
                         <p>{% trans 'Мы в соцсетях' %}:</p>
                         <div class="social-net-Items">
-                    {% if cfg.vk %}
-                            <a class="social-net-Item" href="{{ cfg.inst }}vk">
-                                <img class="social-net-img" src="{% static 'vk.svg' %}" alt="vk">
-                            </a>
+                            {% if cfg.vk %}
+                                <a class="social-net-Item" href="{{ cfg.inst }}vk">
+                                    <img class="social-net-img" src="{% static 'vk.svg' %}" alt="vk">
+                                </a>
                             {% endif %}
-                    {% if cfg.ok %}
-                            <a class="social-net-Item" href="{{ cfg.ok }}">
-                                <img class="social-net-img" src="{% static 'ok.svg' %}" alt="ok">
-                            </a>
-                        {% endif %}
-                    {% if cfg.fb %}
-                            <a class="social-net-Item" href="{{ cfg.fb }}">
-                                <img class="social-net-img" src="{% static 'fb.svg' %}" alt="fb">
-                            </a>
-                        {% endif %}
-                    {% if cfg.inst %}
-                            <a class="social-net-Item" href="{{ cfg.inst }}">
-                                <img class="social-net-img" src="{% static 'inst.svg' %}" alt="inst">
-                            </a>
-                        {% endif %}
+                            {% if cfg.ok %}
+                                <a class="social-net-Item" href="{{ cfg.ok }}">
+                                    <img class="social-net-img" src="{% static 'ok.svg' %}" alt="ok">
+                                </a>
+                            {% endif %}
+                            {% if cfg.fb %}
+                                <a class="social-net-Item" href="{{ cfg.fb }}">
+                                    <img class="social-net-img" src="{% static 'fb.svg' %}" alt="fb">
+                                </a>
+                            {% endif %}
+                            {% if cfg.inst %}
+                                <a class="social-net-Item" href="{{ cfg.inst }}">
+                                    <img class="social-net-img" src="{% static 'inst.svg' %}" alt="inst">
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="linkBlock1">
-                        <a href="/news/" class="footer_link2">{% trans 'НОВОСТИ' %}</a>
+                        <a href="/#cert" class="footer_link2">{% trans 'Патенты и лицензии' %}</a>
+                        <a href="/#news" class="footer_link2">{% trans 'НОВОСТИ' %}</a>
+                        <a href="/#feedback" class="footer_link1">{% trans 'ОБРАТНАЯ СВЯЗЬ' %}</a>
+
                     </div>
                 </div>
 
                 <div class="followBlock">
                     <p>{% trans 'Подписаться на новости' %}</p>
                     <div class="newsFollow">
-                        <input type="email" id="followEmail" name="Follow" placeholder="Введите ваш e-mail">
-                        <button type="submit" id="followButton">{% trans 'Подписаться' %}
+                        <input type="email" class="followEmail" name="Follow"
+                               placeholder="{% trans 'Введите ваш e-mail' %}">
+                        <button type="submit" class="followButton">{% trans 'Подписаться' %}
                         </button>
                     </div>
                 </div>
@@ -196,12 +307,13 @@
 
             <div class="footerElement2">
                 <div class="footer_catalog">
-                    <a href="/#products" class="footer_link3">
+                    <a href="/#catalog" class="footer_link3">
                         {% trans 'КАТАЛОГ' %}
                     </a>
                     <div class="light_catalog-elements">
                         {% for category in categories %}
-                        <a href="/?category={{ category.id }}#products" class="footer_catalog-element">— {{ category.title }}</a>
+                            <a class="footer_catalog-element"
+                               href="/?category={{ category.id }}#products">— {{ category.title }}</a>
                         {% endfor %}
                     </div>
                 </div>
@@ -209,10 +321,9 @@
 
             <div class="footerElement3">
                 <div class="footer_contacts">
-                    <a href="/contacts/" class="footer_link4">{% trans 'Контакты' %}</a>
+                    <a href="/#contacts" class="footer_link4">{% trans 'Контакты' %}</a>
                 </div>
                 <div class="footer_contact-elements">
-                    {% if cfg.phone %}
                     <div class="contact_element">
                         <p class="light_catalog-elements">
                             {% trans 'Телефон в Пскове' %}:
@@ -221,8 +332,6 @@
                             {{ cfg.phone }}
                         </a>
                     </div>
-                    {% endif %}
-                {% if cfg.email %}
                     <div class="contact_element">
                         <p class="light_catalog-elements">
                             {% trans 'Электронная почта' %}:
@@ -231,8 +340,6 @@
                             {{ cfg.email }}
                         </a>
                     </div>
-                {% endif %}
-                {% if cfg.address %}
                     <div class="contact_element">
                         <p class="light_catalog-elements">
                             {% trans 'Адрес' %}:
@@ -241,16 +348,148 @@
                             {{ cfg.address }}
                         </p>
                     </div>
-                {% endif %}
 
                 </div>
             </div>
         </div>
+
+        <!----------------------------------------------------- Мобильный футер-->
+        <div class="footer-mobile">
+            <div class="followBlock">
+                <p>{% trans 'Подписаться на новости' %}</p>
+                <div class="newsFollow">
+                    <input type="email" class="followEmail" name="Follow"
+                           placeholder="{% trans 'Введите ваш e-mail' %}">
+                    <button type="submit" class="followButton">{% trans 'Подписаться' %}
+                    </button>
+                </div>
+            </div>
+            <div class="social_networks">
+                <p>{% trans 'Мы в соцсетях' %}:</p>
+                <div class="social-net-Items">
+                    {% if cfg.vk %}
+                        <a class="social-net-Item" href="{{ cfg.inst }}vk">
+                            <img class="social-net-img" src="{% static 'vk.svg' %}" alt="vk">
+                        </a>
+                    {% endif %}
+                    {% if cfg.ok %}
+                        <a class="social-net-Item" href="{{ cfg.ok }}">
+                            <img class="social-net-img" src="{% static 'ok.svg' %}" alt="ok">
+                        </a>
+                    {% endif %}
+                    {% if cfg.fb %}
+                        <a class="social-net-Item" href="{{ cfg.fb }}">
+                            <img class="social-net-img" src="{% static 'fb.svg' %}" alt="fb">
+                        </a>
+                    {% endif %}
+                    {% if cfg.inst %}
+                        <a class="social-net-Item" href="{{ cfg.inst }}">
+                            <img class="social-net-img" src="{% static 'inst.svg' %}" alt="inst">
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div>
+                <div class="asideElement">
+                    <div class="catalog">
+                        <a href="/#catalog" class="aside-link">
+                            {% trans 'Каталог' %}
+                        </a>
+                        <img class="catalog-header-footer" src="{% static 'small-arrow-2.svg' %}" alt="arrow"
+                             onclick="Footer()">
+                    </div>
+                    <div class="catalog-items-footer">
+                        {% for category in categories %}
+                            <a class="catalog-item"
+                               href="/?category={{ category.id }}#products">— {{ category.title }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="asideElement">
+                    <a href="/#contacts" class="aside-link">
+                        {% trans 'Контакты' %}
+                    </a>
+                    <div class="footer_contact-elements">
+                        <div class="contact_element">
+                            <p class="light_catalog-elements">
+                                {% trans 'Телефон в Пскове' %}:
+                            </p>
+                            <a href="tel:{{ cfg.phone }}">
+                                {{ cfg.phone }}
+                            </a>
+                        </div>
+                        <div class="contact_element">
+                            <p class="light_catalog-elements">
+                                {% trans 'Электронная почта' %}:
+                            </p>
+                            <a href="mailto:{{ cfg.email }}">
+                                {{ cfg.email }}
+                            </a>
+                        </div>
+                        <div class="contact_element">
+                            <p class="light_catalog-elements">
+                                {% trans 'Адрес' %}:
+                            </p>
+                            <p>
+                                {{ cfg.address }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="asideElement">
+                    <a href="/#cert" class="aside-link">
+                        {% trans 'Патенты и лицензии' %}
+                    </a>
+                </div>
+
+                <div class="asideElement">
+                    <a href="/#news" class="aside-link">
+                        {% trans 'Новости' %}
+                    </a>
+                </div>
+                <div class="asideElement">
+                    <a href="/#feedback" class="aside-link">
+                        {% trans 'Обратная связь' %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </footer>
 </div>
-{% block script %}
-    <script src="/assets/js/jquery-3.5.1.min.js"></script>.
-    <script src="{% static 'index.js' %}"></script>
+{% block scripts %}
+<script src="{% static 'index.js' %}"></script>
+<script src="{% static 'gallery.js' %}"></script>
+<script src="https://unpkg.com/imask"></script>
+<script>
+    var element = document.getElementById('reg-phone');
+    var maskOptions = {
+        mask: '+{7} (000) 000-00-00'
+    };
+    var mask = IMask(element, maskOptions);
+</script>
+
+
+<script src="{% static 'lightgallery/lightgallery.min.js' %}"></script>
+<!-- lightgallery plugins -->
+<script>
+    lightGallery(document.querySelector('.certificates'), {
+            thumbnail: true,
+            animateThumb: true,
+            zoomFromOrigin: true,
+            allowMediaOverlap: true,
+            toggleThumb: true,
+            enableSwipe: true,
+            escKey: true,
+            getCaptionFromTitleOrAlt: true,
+            startAnimationDuration: 400,
+            startClass: "lg-start-zoom",
+        }
+    );
+</script>
 {% endblock %}
 </body>
 </html>

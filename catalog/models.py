@@ -39,7 +39,9 @@ class Product(models.Model):
                                  related_name='products', on_delete=models.SET_NULL, blank=True, null=True)
     image = models.ImageField(_("Изображение"), upload_to=get_upload_to)
     description = RichTextUploadingField(_("Описание"), blank=True)
-    price = models.DecimalField(_("Цена"), default=0, max_digits=6, decimal_places=2)
+    specifications = RichTextUploadingField(_("Описание"), blank=True)
+    info = RichTextUploadingField(_("Описание"), blank=True)
+    file = models.FileField(_("Файл"), blank=True, null=True)
     is_active = models.BooleanField(_("Статус активности"), default=True)
 
     class Meta:
@@ -80,10 +82,12 @@ class ProductMedia(models.Model):
 
 class ProductReview(models.Model):
     product = models.ForeignKey(Product, verbose_name="товар", related_name='review', on_delete=models.CASCADE)
-    user = models.ForeignKey("account.User", verbose_name="Пользователь", related_name="user_review",
-                             on_delete=models.CASCADE)
-    text = models.TextField("Отзыв")
+    name = models.CharField("Имя", max_length=130, null=True)
+    advantages = models.TextField("Достоинства", null=True)
+    disadvantages = models.TextField("Недостатки", null=True)
+    text = models.TextField("Текст", null=True)
     rate = models.IntegerField("Оценка", default=0)
+    image = models.ImageField(_("Изображение"), upload_to=get_upload_to, blank=True)
     is_active = models.BooleanField(_("Статус активности"), default=True)
     date = models.DateField("Дата", default=timezone.now)
 
