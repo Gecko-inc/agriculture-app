@@ -1,5 +1,18 @@
 "use strict";
 
+ var desc_div = document.getElementsByClassName('info-block-title-desc')[0];
+ var character_div = document.getElementsByClassName('info-block-title-character')[0];
+
+ desc_div.addEventListener('click', function (event) {
+     // alert(123);
+     selectDesc();
+ });
+
+ character_div.addEventListener('click', function (event) {
+     // alert(123);
+     selectCharacter();
+ });
+
 function selectDesc() {
     document.querySelector(".info-block-title-review").classList.remove('active-title-review');
     document.querySelector(".product-info-review").classList.remove('active-review');
