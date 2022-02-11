@@ -96,13 +96,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
     video.addEventListener('click', function () {
-
-        document.querySelector(".main-photo").classList.toggle('none');
+        try{
+            document.querySelector(".main-photo").classList.toggle('none');
         document.querySelector(".video").classList.toggle('video-active');
         if (video.classList.contains('ready')) {
             return;
         }
         video.classList.add('ready');
+        } catch (err){}
+
     });
 });
 
