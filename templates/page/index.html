@@ -123,7 +123,7 @@
             {% trans 'Обратная связь' %}
         </div>
 
-        <form id="regForm" action="#" enctype="multipart/form-data" method="post" class="reg-order-form">
+        <form id="regForm" action="{% url 'feedback:feedback' %}" enctype="multipart/form-data" method="post" class="reg-order-form">
             {% csrf_token %}
             <input type="text" name="name" placeholder="{% trans 'Имя' %} *" class="reg-form_name _req" required>
 
@@ -143,6 +143,19 @@
 
             <button id="reg-Button" class="reg-orderButton" type="submit">{% trans 'Отправить' %}</button>
         </form>
+
+        <div class="modal-review" >
+            <div class="modal-wrap-review">
+                <p class="product-title">
+                {% trans 'Спасибо за Ваш отзыв!' %}
+                </p>
+
+                <button class="close-modal-review" onclick="closeReviewModal()"><img class="close-modal-img-review"
+                                                                     src="{% static 'product/modal-close.svg' %}"
+                                                                     alt="close"></button>
+            </div>
+
+        </div>
     </section>
 
 
@@ -206,7 +219,10 @@
         {% trans 'Оставить о сайте' %}
     </a>
 {% endblock %}
-
+{% block scripts %}
+    <script src="{% static 'js/comment.js' %}"></script>
+    {{ block.super }}
+{% endblock %}
 
 
 

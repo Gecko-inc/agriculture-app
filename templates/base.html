@@ -9,17 +9,17 @@
     <title>{% block title %}{% trans 'Садовый интсрумент' %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block style %}
-    <link type="text/css" href="{% static 'index.css' %}" rel="stylesheet">
-    <link type="text/css" href = "{% static 'news.css' %}" rel = "stylesheet">
-    <link type="text/css" href = "{% static 'feedback.css' %}" rel = "stylesheet">
-    <link type="text/css" href = "{% static 'contacts.css' %}" rel = "stylesheet">
-    <link type="text/css" href = "{% static 'certificate.css' %}" rel = "stylesheet">
-    <link type="text/css" href = "{% static 'adaptability.css' %}" rel = "stylesheet">
-    <link type="text/css" href = "{% static 'adaptability-content.css' %}" rel = "stylesheet">
+        <link type="text/css" href="{% static 'index.css' %}" rel="stylesheet">
+        <link type="text/css" href="{% static 'news.css' %}" rel="stylesheet">
+        <link type="text/css" href="{% static 'feedback.css' %}" rel="stylesheet">
+        <link type="text/css" href="{% static 'contacts.css' %}" rel="stylesheet">
+        <link type="text/css" href="{% static 'certificate.css' %}" rel="stylesheet">
+        <link type="text/css" href="{% static 'adaptability.css' %}" rel="stylesheet">
+        <link type="text/css" href="{% static 'adaptability-content.css' %}" rel="stylesheet">
 
 
-    <link type="text/css" rel="stylesheet" href="{% static 'lightgallery/css/lightgallery.css' %}"/>
-    <!-- lightgallery plugins -->
+        <link type="text/css" rel="stylesheet" href="{% static 'lightgallery/css/lightgallery.css' %}"/>
+        <!-- lightgallery plugins -->
 
     {% endblock %}
 </head>
@@ -99,42 +99,42 @@
                 </div>
 
                 <div>
-                        <div class="catalog">
-                            <a href="/#catalog" class="aside-link" onclick="closeMenu()">
-                                {% trans 'Каталог' %}
-                            </a>
-                            <img class="catalog-burger-header" src="{% static 'small-arrow.svg' %}" alt="arrow"
-                                 onclick="burgerCatalogSelect()">
-                        </div>
-                        <div class="catalog-burger-items">
-                            {% for category in categories %}
-                                <a class="catalog-item"
-                                   href="/?category={{ category.id }}#products">— {{ category.title }}</a>
-                            {% endfor %}
-                        </div>
-
-                        <div class="asideElement">
-                            <a href="/#cert" class="aside-link" onclick="closeMenu()">
-                                {% trans 'Патенты и лицензии' %}
-                            </a>
-                        </div>
-
-                        <div class="asideElement">
-                            <a href="/#news" class="aside-link" onclick="closeMenu()">
-                                {% trans 'Новости' %}
-                            </a>
-                        </div>
-                        <div class="asideElement">
-                            <a href="/#feedback" class="aside-link" onclick="closeMenu()">
-                                {% trans 'Обратная связь' %}
-                            </a>
-                        </div>
-                        <div class="asideElement">
-                            <a href="/#contacts" class="aside-link" onclick="closeMenu()">
-                                {% trans 'Контакты' %}
-                            </a>
-                        </div>
+                    <div class="catalog">
+                        <a href="/#catalog" class="aside-link" onclick="closeMenu()">
+                            {% trans 'Каталог' %}
+                        </a>
+                        <img class="catalog-burger-header" src="{% static 'small-arrow.svg' %}" alt="arrow"
+                             onclick="burgerCatalogSelect()">
                     </div>
+                    <div class="catalog-burger-items">
+                        {% for category in categories %}
+                            <a class="catalog-item"
+                               href="/?category={{ category.id }}#products">— {{ category.title }}</a>
+                        {% endfor %}
+                    </div>
+
+                    <div class="asideElement">
+                        <a href="/#cert" class="aside-link" onclick="closeMenu()">
+                            {% trans 'Патенты и лицензии' %}
+                        </a>
+                    </div>
+
+                    <div class="asideElement">
+                        <a href="/#news" class="aside-link" onclick="closeMenu()">
+                            {% trans 'Новости' %}
+                        </a>
+                    </div>
+                    <div class="asideElement">
+                        <a href="/#feedback" class="aside-link" onclick="closeMenu()">
+                            {% trans 'Обратная связь' %}
+                        </a>
+                    </div>
+                    <div class="asideElement">
+                        <a href="/#contacts" class="aside-link" onclick="closeMenu()">
+                            {% trans 'Контакты' %}
+                        </a>
+                    </div>
+                </div>
             </nav>
         </div>
 
@@ -296,12 +296,13 @@
 
                 <div class="followBlock">
                     <p>{% trans 'Подписаться на новости' %}</p>
-                    <div class="newsFollow">
-                        <input type="email" class="followEmail" name="Follow"
-                               placeholder="{% trans 'Введите ваш e-mail' %}">
-                        <button type="submit" class="followButton">{% trans 'Подписаться' %}
-                        </button>
-                    </div>
+                        <form class="newsFollow" action="{% url 'feedback:SubscribeView' %}" method="post" id="SubscribeView">
+                            {% csrf_token %}
+                            <input type="email" class="followEmail" name="email"
+                                   placeholder="{% trans 'Введите ваш e-mail' %}">
+                            <button type="submit" class="followButton">{% trans 'Подписаться' %}
+                            </button>
+                        </form>
                 </div>
             </div>
 
@@ -358,12 +359,13 @@
         <div class="footer-mobile">
             <div class="followBlock">
                 <p>{% trans 'Подписаться на новости' %}</p>
-                <div class="newsFollow">
-                    <input type="email" class="followEmail" name="Follow"
-                           placeholder="{% trans 'Введите ваш e-mail' %}">
-                    <button type="submit" class="followButton">{% trans 'Подписаться' %}
-                    </button>
-                </div>
+                    <form class="newsFollow" action="{% url 'feedback:SubscribeView' %}" method="post" id="SubscribeView">
+                            {% csrf_token %}
+                        <input type="email" class="followEmail" name="email"
+                               placeholder="{% trans 'Введите ваш e-mail' %}">
+                        <button type="submit" class="followButton">{% trans 'Подписаться' %}
+                        </button>
+                    </form>
             </div>
             <div class="social_networks">
                 <p>{% trans 'Мы в соцсетях' %}:</p>
@@ -462,35 +464,36 @@
     </footer>
 </div>
 {% block scripts %}
-<script src="{% static 'index.js' %}"></script>
-<script src="{% static 'gallery.js' %}"></script>
-<script src="https://unpkg.com/imask"></script>
-<script>
-    var element = document.getElementById('reg-phone');
-    var maskOptions = {
-        mask: '+{7} (000) 000-00-00'
-    };
-    var mask = IMask(element, maskOptions);
-</script>
+    <script src="{% static 'js/subscribe.js' %}"></script>
+    <script src="{% static 'index.js' %}"></script>
+    <script src="{% static 'gallery.js' %}"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <script>
+        var element = document.getElementById('reg-phone');
+        var maskOptions = {
+            mask: '+{7} (000) 000-00-00'
+        };
+        var mask = IMask(element, maskOptions);
+    </script>
 
 
-<script src="{% static 'lightgallery/lightgallery.min.js' %}"></script>
-<!-- lightgallery plugins -->
-<script>
-    lightGallery(document.querySelector('.certificates'), {
-            thumbnail: true,
-            animateThumb: true,
-            zoomFromOrigin: true,
-            allowMediaOverlap: true,
-            toggleThumb: true,
-            enableSwipe: true,
-            escKey: true,
-            getCaptionFromTitleOrAlt: true,
-            startAnimationDuration: 400,
-            startClass: "lg-start-zoom",
-        }
-    );
-</script>
+    <script src="{% static 'lightgallery/lightgallery.min.js' %}"></script>
+    <!-- lightgallery plugins -->
+    <script>
+        lightGallery(document.querySelector('.certificates'), {
+                thumbnail: true,
+                animateThumb: true,
+                zoomFromOrigin: true,
+                allowMediaOverlap: true,
+                toggleThumb: true,
+                enableSwipe: true,
+                escKey: true,
+                getCaptionFromTitleOrAlt: true,
+                startAnimationDuration: 400,
+                startClass: "lg-start-zoom",
+            }
+        );
+    </script>
 {% endblock %}
 </body>
 </html>

@@ -84,3 +84,16 @@ function auto_grow(element) {
 //     textarea.style.height = `${scHeight}px`;
 // });
 
+function openReviewModal() {
+    document.querySelector(".modal-review").classList.add('active');
+}
+function closeReviewModal() {
+    document.querySelector(".modal-review").classList.remove('active');
+}
+
+let rev_modal = document.querySelector('.modal-review');
+window.onclick = function (event) {
+    if (event.target === rev_modal) {
+        document.querySelector(".modal-review").classList.remove('active');
+    }
+}

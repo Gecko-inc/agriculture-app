@@ -1,13 +1,15 @@
-let CommentFrom = document.getElementById('CommentFrom');
+let CommentFrom = document.getElementById('regForm');
 
 CommentFrom.onsubmit = async (e) => {
     e.preventDefault();
     let data = new FormData(CommentFrom);
-    console.log(CommentFrom.getAttribute('action'));
     fetch(CommentFrom.getAttribute('action'), {
         method: 'POST',
         body: data
     });
-    sendForm();
+    CommentFrom.reset();
+    openReviewModal();
+    // el = document.getElementById('feedback');
+    // el.innerHTML = "<b>Спасибо за отзыв</b>"
 
 };

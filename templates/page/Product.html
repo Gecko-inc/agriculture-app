@@ -421,7 +421,7 @@
         <div class="modal-wrap">
             <div class="modal-content">
                 <div class="modal-content-left">
-                    <img class="modal-img" src="{% static 'product/good-min1.jpg' %}">
+                    <img class="modal-img" src="{{ product.image.url }}">
                     <button class="back-2 all-back" onclick="backPage2()">{% trans 'Назад' %}</button>
                     <button class="back-3 all-back" onclick="backPage3()">{% trans 'Назад' %}</button>
                     <button class="back-4 all-back" onclick="backPage4()">{% trans 'Назад' %}</button>
