@@ -52,6 +52,7 @@ header {
     justify-self: start;
 }
 .header_elements-right {
+    align-items: center;
     display: flex;
     flex-direction: row;
     column-gap: 15px;

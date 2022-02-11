@@ -204,6 +204,8 @@
         display: block;
     }
     .m-select-body-style{
+        background-color: #e0dfdf63;
+        border-radius: 10px;
         display: flex;
         flex-direction: column;
         justify-content: center;
