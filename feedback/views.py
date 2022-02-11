@@ -21,5 +21,5 @@ class SubscribeView(View):
             Subscriber.objects.get(email=data.get("email"))
         except Subscriber.DoesNotExist:
             Subscriber.objects.create(email=data.get("email"))
-        return JsonResponse({"status": 'error'})
+        return JsonResponse({"status": 'ok'})
 
