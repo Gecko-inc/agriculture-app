@@ -33,6 +33,7 @@
             </div>
 
             <div class="other-photo">
+            <img class="small-photo" src="{{ product.image.url }}" alt="small-photo">
                 {% for item in product.media.all %}
                     {% if item.image %}
                         <img class="small-photo" src="{{ item.image.url }}" alt="small-photo">
