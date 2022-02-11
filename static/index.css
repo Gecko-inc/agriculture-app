@@ -250,6 +250,7 @@ header {
     gap: 30px;
 }
 .one-product {
+    grid-template-columns: 1fr;
     cursor: pointer;
     max-width: 446px;
     border: 1px solid #E5E5E5;
