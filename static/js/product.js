@@ -1,7 +1,16 @@
 "use strict";
 
-var iframe_el = document.getElementsByTagName('iframe')[0];
-iframe_el.setAttribute( 'class', 'video-style' );
+try {
+
+    var iframe_el = document.getElementsByTagName('iframe')[0];
+    iframe_el.setAttribute('class', 'video-style');
+
+} catch (err) {
+
+    // обработка ошибки
+
+}
+
 
 function selectDesc() {
     document.querySelector(".info-block-title-review").classList.remove('active-title-review');
