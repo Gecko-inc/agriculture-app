@@ -9,16 +9,16 @@
 
 
     {% for product in product_list %}
-        <div class="one-product">
+        <a href="{% url 'catalog:product' product.id %}" class="one-product">
         <img class="one-product-img" src="{{ product.image.url }}" alt="product">
         <p class="one-product-art">{{ product.article }}</p>
         <p class="one-product-desc">{{ product.title }}
         </p>
         <div class="more">
-            <a href="{% url 'catalog:product' product.id %}" class="one-product-art">Подробнее</a>
+            <p class="one-product-art">Подробнее</p>
             <img class="moreArrow" src="{% static 'arrowPodrobnee.svg' %}" alt="more">
         </div>
-    </div>
+        </a>
     {% endfor %}
 </div>
 

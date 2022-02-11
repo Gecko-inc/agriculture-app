@@ -246,6 +246,10 @@
         scroll-padding-top: 45px;
     }
 
+    .mobile-header-right {
+        column-gap: 20px;
+    }
+
     footer {
         background: #DCE7D1;
     }

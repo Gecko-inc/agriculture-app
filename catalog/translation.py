@@ -23,7 +23,6 @@ class CategoryTrans(TranslationOptions):
 class ProductMediaTrans(TranslationOptions):
     fields = [
         'image',
-        'iframe',
     ]
 
 

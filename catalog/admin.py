@@ -1,9 +1,15 @@
 from django.contrib import admin
 from modeltranslation.admin import TabbedTranslationAdmin, TranslationStackedInline
-from .models import Category, Product, ProductMedia, ProductReview
+from .models import Category, Product, ProductMedia, ProductReview, ReviewMedia
 
 
-class ProductReviewAdmin(admin.StackedInline):
+class ReviewMediaAdmin(admin.StackedInline):
+    model = ReviewMedia
+    classes = ["collapse"]
+    extra = 0
+
+
+class ProductReviewInlineAdmin(admin.StackedInline):
     model = ProductReview
     classes = ["collapse"]
     extra = 0
@@ -22,4 +28,9 @@ class CategoryAdmin(TabbedTranslationAdmin):
 
 @admin.register(Product)
 class ProductAdmin(TabbedTranslationAdmin):
-    inlines = [ProductMediaAdmin, ProductReviewAdmin]
+    inlines = [ProductMediaAdmin, ProductReviewInlineAdmin]
+
+
+@admin.register(ProductReview)
+class ProductReviewAdmin(admin.ModelAdmin):
+    inlines = [ReviewMediaAdmin]

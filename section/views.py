@@ -17,6 +17,7 @@ class Index(TemplateView):
         categories = Category.objects.filter(is_active=True)
         try:
             category = self.request.GET.get('category', categories[0].id)
+            context['category_id'] = int(category)
             products_list = Product.objects.filter(is_active=True, category_id=category)
             page_num = self.request.GET.get('page', 1)
             paginator = Paginator(products_list, 6)

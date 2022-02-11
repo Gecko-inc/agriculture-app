@@ -656,7 +656,7 @@
     gap: 45px;
 }
 .page-4.active {
-    width: 60%;
+    width: 100%;
 }
 .page-5 {
     height: 100%;
@@ -759,3 +759,4 @@
 .sendFile-clean:hover {
     color: #4FAE3C;
 }
+

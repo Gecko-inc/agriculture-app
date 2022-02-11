@@ -42,6 +42,8 @@ class Product(models.Model):
     specifications = RichTextUploadingField(_("Описание"), blank=True)
     info = RichTextUploadingField(_("Описание"), blank=True)
     file = models.FileField(_("Файл"), blank=True, null=True)
+    cert = models.FileField(_("Сертификат"), blank=True, null=True)
+    iframe = models.TextField(_("Видео с YouTube"), blank=True)
     is_active = models.BooleanField(_("Статус активности"), default=True)
 
     class Meta:
@@ -66,8 +68,7 @@ class ProductMedia(models.Model):
     IMAGE_PATH = "catalog/media/product"
 
     product = models.ForeignKey(Product, verbose_name="товар", related_name='media', on_delete=models.CASCADE)
-    image = models.ImageField(_("Изображение"), upload_to=get_upload_to, blank=True)
-    iframe = models.TextField(_("Видео с YouTube"), blank=True)
+    image = models.ImageField(_("Изображение"), upload_to=get_upload_to, blank=False)
     sort = models.IntegerField(_('Сортировка'), default=0, help_text=_('Чем ниже число, тем приоритетнее позиция. '
                                                                        'Допустимо использование знака "минус".'))
 
@@ -83,11 +84,11 @@ class ProductMedia(models.Model):
 class ProductReview(models.Model):
     product = models.ForeignKey(Product, verbose_name="товар", related_name='review', on_delete=models.CASCADE)
     name = models.CharField("Имя", max_length=130, null=True)
+    email = models.CharField("E-Mail", max_length=130, null=True)
     advantages = models.TextField("Достоинства", null=True)
     disadvantages = models.TextField("Недостатки", null=True)
     text = models.TextField("Текст", null=True)
     rate = models.IntegerField("Оценка", default=0)
-    image = models.ImageField(_("Изображение"), upload_to=get_upload_to, blank=True)
     is_active = models.BooleanField(_("Статус активности"), default=True)
     date = models.DateField("Дата", default=timezone.now)
 
@@ -97,4 +98,19 @@ class ProductReview(models.Model):
         verbose_name_plural = "Отзывы"
 
     def __str__(self):
-        return f"Отзыв от {self.user.last_name} {self.user.first_name} от {self.date}"
+        return f"Отзыв от {self.name} | {self.date}"
+
+
+class ReviewMedia(models.Model):
+    comment = models.ForeignKey(ProductReview, on_delete=models.CASCADE, verbose_name="Комментарий",
+                                related_name='comment_media')
+    image = models.ImageField(_("Изображение"), upload_to=get_upload_to, blank=False)
+
+    class Meta:
+        verbose_name = "Фото"
+        verbose_name_plural = "Фотографии"
+
+    def __str__(self):
+        return f"#{self.id}"
+
+

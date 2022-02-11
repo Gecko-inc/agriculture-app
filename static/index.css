@@ -175,6 +175,9 @@ header {
     font-size: 40px;
     font-weight: 500;
 }
+.product-title {
+
+    }
 .products {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -189,7 +192,7 @@ header {
     padding: 5% 5% 5% 5%;
     display: flex;
     flex-direction: column;
-    gap: 10%;
+    gap: 15px;
     width: inherit;
     /*justify-content: flex-end;*/
     /*min-height: 220px;*/
@@ -213,6 +216,7 @@ header {
     height: auto;
 }
 .one-product-art {
+    height: max-content;
     font-size: 14px;
     color: #6C786A;
     font-weight: 400;
@@ -220,11 +224,14 @@ header {
 .more {
     display: flex;
     flex-direction: row;
+    align-self: flex-end;
+    height: max-content;
     gap: 7px;
     flex-wrap: wrap;
 }
 
 .one-product-desc {
+    height: max-content;
     font-size: 16px;
     color: #343434;
     font-weight: 400;
@@ -251,9 +258,10 @@ header {
     box-shadow: 0 6px 10px 0 #B7CAD033;
     border-radius: 10px;
     display: grid;
+    justify-content: space-between;
     flex-direction: column;
     row-gap: 15px;
-    min-height: 305px;
+    min-height: 280px;
 }
 .one-product-img {
     justify-self: center;
@@ -527,7 +535,7 @@ footer{
     color: white;
 }
 .followButton:hover {
-    background-color: rgba(101, 222, 76, 0.31);
+    font-weight: 500;
 }
 
 
@@ -581,6 +589,7 @@ footer{
     max-width: 446px;
 }
 .certificates a p {
+    padding-top: 10px;
     width: 100%;
     font-size: 16px;
     font-weight: 400;

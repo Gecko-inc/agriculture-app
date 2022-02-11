@@ -68,7 +68,9 @@
             </div>
 
             <div class="header_elements-right">
-                <img src="{% static 'header-phone.svg' %}" alt="phone">
+                <a href="tel:{{ cfg.phone }}">
+                    <img src="{% static 'header-phone.svg' %}" alt="phone">
+                </a>
                 <div class="right-block">
                     <a href="tel:{{ cfg.phone }}">
                         {{ cfg.phone }}
@@ -97,7 +99,6 @@
                 </div>
 
                 <div>
-                    <div class="asideElement">
                         <div class="catalog">
                             <a href="/#catalog" class="aside-link" onclick="closeMenu()">
                                 {% trans 'Каталог' %}
