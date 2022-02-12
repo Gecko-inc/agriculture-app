@@ -418,6 +418,8 @@
     }
     .close-modal {
         position: absolute;
+        right: 15px;
+        top: 20px;
     }
     .modal-img {
         width: 80px;
