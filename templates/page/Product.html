@@ -551,21 +551,7 @@
 
 {% block scripts %}
     {{ block.super }}
-    <script>
-        lightGallery(document.querySelector('.user-gallery'), {
-                thumbnail: true,
-                animateThumb: true,
-                zoomFromOrigin: true,
-                allowMediaOverlap: true,
-                toggleThumb: true,
-                enableSwipe: true,
-                escKey: true,
-                getCaptionFromTitleOrAlt: true,
-                startAnimationDuration: 400,
-                startClass: "lg-start-zoom",
-            }
-        );
-    </script>
+
     <script>
         let lg = document.querySelectorAll('.user-gallery');
         for (let i = 0; i < lg.length; i++) {
