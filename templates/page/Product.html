@@ -33,7 +33,7 @@
             </div>
 
             <div class="other-photo">
-            <img class="small-photo" src="{{ product.image.url }}" alt="small-photo">
+                <img class="small-photo" src="{{ product.image.url }}" alt="small-photo">
                 {% for item in product.media.all %}
                     {% if item.image %}
                         <img class="small-photo" src="{{ item.image.url }}" alt="small-photo">
@@ -186,7 +186,8 @@
                             {% for item in comments %}
                                 {% for image in item.comment_media.all %}
                                     <a href="{{ image.image.url }}">
-                                        <img class="small-photo" src="{{ image.image.url }}" alt="text user's comment"/>
+                                        <img class="small-photo" src="{{ image.image.url }}"
+                                             alt="{{ image.comment.text }}"/>
                                     </a>
                                 {% endfor %}
                             {% endfor %}
@@ -242,7 +243,7 @@
                                     {% for image in item.comment_media.all %}
                                         <a href="{{ image.image.url }}">
                                             <img class="small-photo" src="{{ image.image.url }}"
-                                                 alt="text user's comment"/>
+                                                 alt="{{ image.comment.text }}"/>
                                         </a>
                                     {% endfor %}
                                 </div>
@@ -343,7 +344,7 @@
                                         {% for image in item.comment_media.all %}
                                             <a href="{{ image.image.url }}">
                                                 <img class="small-photo" src="{{ image.image.url }}"
-                                                     alt="text user's comment"/>
+                                                     alt="{{ image.comment.text }}"/>
                                             </a>
                                         {% endfor %}
                                     {% endfor %}
@@ -400,7 +401,7 @@
                                             {% for image in item.comment_media.all %}
                                                 <a href="{{ image.image.url }}">
                                                     <img class="small-photo" src="{{ image.image.url }}"
-                                                         alt="text user's comment"/>
+                                                         alt="{{ image.comment.text }}"/>
                                                 </a>
                                             {% endfor %}
                                         </div>
