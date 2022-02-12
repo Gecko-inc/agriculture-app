@@ -473,10 +473,6 @@
         width: 120px;
     }
 
-    .followButton {
-        font-size: 12px;
-    }
-
 }
 
 @media screen and (max-width: 220px) {
@@ -488,7 +484,9 @@
     .block-news, .one-product, .footer-mobile {
         word-break: break-word;
     }
-
+    .followButton {
+        font-size: 12px;
+    }
     .products-list {
         grid-template-columns: 1fr;
     }

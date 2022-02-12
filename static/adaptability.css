@@ -243,6 +243,9 @@
 }
 
 @media screen and (max-width: 600px) {
+    .followEmail, .followButton {
+        font-size: 12px;
+    }
 
     html {
         scroll-padding-top: 45px;
