@@ -78,3 +78,31 @@
 
 
 }
+
+@media screen and (max-width: 600px) {
+    .one-news {
+        padding: 45px 0 30px;
+        font-size: 28px;
+        grid-template-columns: 1fr;
+        row-gap: 30px;
+    }
+    .news-title {
+        font-size: 28px;
+    }
+    .news-bread-crumbs {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .one-news {
+        grid-auto-columns: 1fr;
+        row-gap: 30px;
+        padding: 90px 0 40px;
+    }
+    .one-news-left {
+        gap: 25px;
+    }
+    .all-news-link {
+        width: 100%;
+    }
+}
