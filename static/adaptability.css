@@ -334,7 +334,7 @@
 }
 
 @media screen and (max-width: 260px) {
-    .followEmail, .followButton {
+    .followButton {
         font-size: 10px;
     }
 }

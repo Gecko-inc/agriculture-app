@@ -484,9 +484,6 @@
     .block-news, .one-product, .footer-mobile {
         word-break: break-word;
     }
-    .followButton {
-        font-size: 12px;
-    }
     .products-list {
         grid-template-columns: 1fr;
     }
