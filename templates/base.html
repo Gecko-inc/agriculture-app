@@ -6,8 +6,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}{% trans 'Садовый интсрумент' %}{% endblock %}</title>
+    <title>{% block title %}{% trans 'Сельхозинструмент' %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'logo.ico' %}" type="image/x-icon">
     {% block style %}
         <link type="text/css" href="{% static 'index.css' %}" rel="stylesheet">
         <link type="text/css" href="{% static 'news.css' %}" rel="stylesheet">
@@ -34,7 +35,7 @@
                         <img class="logo-img" src="{% static 'logo.svg' %}" alt="logo">
                     </a>
                     <a class="link__logo-name" href="/">
-                        {% trans 'Садовый инструмент' %}
+                        {% trans 'Сельхозинструмент' %}
                     </a>
                 </div>
 
