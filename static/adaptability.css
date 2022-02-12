@@ -243,6 +243,10 @@
 }
 
 @media screen and (max-width: 600px) {
+
+    .contact_element {
+        max-width: 100%;
+    }
     .followEmail, .followButton {
         font-size: 12px;
     }
