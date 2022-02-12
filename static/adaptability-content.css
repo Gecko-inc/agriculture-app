@@ -525,9 +525,7 @@
     .product-photos, .other-photo{
         gap: 10px;
     }
-    .other-photo {
-        padding-bottom: 0;
-    }
+
     .small-photo, .small-video {
         max-width: 50px;
         max-height: 50px;
