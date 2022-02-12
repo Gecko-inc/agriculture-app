@@ -30,6 +30,9 @@
     row-gap: 30px;
 }
 .main-photo-block {
+    width: 100%;
+    height: auto;
+
 }
 .other-photo {
     display: flex;
