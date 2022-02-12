@@ -100,18 +100,20 @@
                 </div>
 
                 <div>
-                    <div class="catalog">
-                        <a href="/#catalog" class="aside-link" onclick="closeMenu()">
-                            {% trans 'Каталог' %}
-                        </a>
-                        <img class="catalog-burger-header" src="{% static 'small-arrow.svg' %}" alt="arrow"
-                             onclick="burgerCatalogSelect()">
-                    </div>
-                    <div class="catalog-burger-items">
-                        {% for category in categories %}
-                            <a class="catalog-item"
-                               href="/?category={{ category.id }}#products">— {{ category.title }}</a>
-                        {% endfor %}
+                    <div class="asideElement">
+                        <div class="catalog">
+                            <a href="/#catalog" class="aside-link" onclick="closeMenu()">
+                                {% trans 'Каталог' %}
+                            </a>
+                            <img class="catalog-burger-header" src="{% static 'small-arrow.svg' %}" alt="arrow"
+                                 onclick="burgerCatalogSelect()">
+                        </div>
+                        <div class="catalog-burger-items">
+                            {% for category in categories %}
+                                <a class="catalog-item"
+                                   href="/?category={{ category.id }}#products">— {{ category.title }}</a>
+                            {% endfor %}
+                        </div>
                     </div>
 
                     <div class="asideElement">
