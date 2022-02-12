@@ -568,6 +568,7 @@ footer{
     display: flex;
     flex-direction: column;
     row-gap: 5px;
+    max-width: 270px;
 }
 .contact_element>a:hover{
     color: #6C786A;
