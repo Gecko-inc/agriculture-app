@@ -475,6 +475,14 @@
 
 }
 
+@media screen and (max-width: 300px) {
+    .logo {
+        font-size: 14px;
+        column-gap: 8px;
+    }
+}
+
+
 @media screen and (max-width: 220px) {
 
     .title, .news-title {
@@ -510,10 +518,6 @@
         flex-wrap: wrap;
         gap: 10px;
     }
-    .logo {
-        flex-wrap: wrap;
-    }
-
 
     .certif {
         flex-wrap: wrap;

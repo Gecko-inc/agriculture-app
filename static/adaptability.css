@@ -110,6 +110,7 @@
 
     /*++++++++++++++ МЕНЮ НАВИГАЦИИ ++++++++++++*/
     .link__logo-name {
+        word-break: break-all;
         width: auto;
         white-space: normal;
     }

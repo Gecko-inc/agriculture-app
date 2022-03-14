@@ -67,11 +67,24 @@ header {
 .logo {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     column-gap: 15px;
+    row-gap: 8px;
     align-items: center;
 }
 .link__logo-name {
     white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.dext-logo-img {
+    width: 60px;
+    height: 60px;
+}
+
+.mobile-logo-img {
+    width: 55px;
+    height: 55px;
 }
 
 .translation{
@@ -366,7 +379,7 @@ header {
     height: 100vh;
     /*overflow-y: auto;*/
     padding-top: 90px;
-    font-size: 20px;
+    font-size: 18px;
     color: #6C786A;
 }
 .asideElement:first-child{
@@ -428,7 +441,6 @@ header {
 .catalog-item:hover, .aside-link:hover {
     color: #343434;
 }
-
 
 
 
