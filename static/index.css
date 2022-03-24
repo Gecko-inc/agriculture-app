@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 html,body,div,p,h1,header,nav,aside,footer,a,ul,li,input,form{
     margin:0;padding:0;outline:0;border:0;
@@ -14,9 +14,10 @@ a{
     display: block;
 }
 
-.burger-menu, .mobile-icon, .translation-mobile, .footer-mobile {
+.burger-menu, .mobile-icon, .translation-mobile, .footer-mobile, .mobile-header-logo, .mobile-menu-title, .mobile-head-title{
     display: none;
 }
+
 
 header {
     background:#FFF8F2;
@@ -72,9 +73,25 @@ header {
     row-gap: 8px;
     align-items: center;
 }
+
+.logo-name {
+    display: flex;
+    flex-direction: column;
+    color: #4FAE3C;
+    font-weight: 800;
+    height: 60px;
+    justify-content: center;
+    gap: 3px;
+}
 .link__logo-name {
     white-space: nowrap;
     text-transform: uppercase;
+}
+.link__logo-name-1 {
+    font-size: 34px;
+}
+.link__logo-name-2 {
+    font-size: 8px;
 }
 
 .dext-logo-img {
@@ -83,14 +100,13 @@ header {
 }
 
 .mobile-logo-img {
-    width: 55px;
-    height: 55px;
+    height: 45px;
 }
 
 .translation{
     text-transform: uppercase;
     color: #6C786A;
-    margin-left: 45px;
+    margin-left: 15px;
 }
 .select {
     position: relative;

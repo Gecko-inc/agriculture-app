@@ -1,6 +1,20 @@
 @media screen and (max-width: 991px) {
 
 
+    .mobile-head-title {
+        display: block;
+    }
+    .mobile-head-title-1 {
+         font-size: 18px;
+    }
+    .mobile-head-title-2 {
+        font-size: 8px;
+    }
+    .logo-name {
+        height: auto;
+    }
+
+
     .title {
         padding: 65px 0 30px;
         font-size: 32px;
@@ -475,10 +489,33 @@
 
 }
 
-@media screen and (max-width: 300px) {
-    .logo {
+
+@media screen and (max-width: 400px) {
+    .mobile-head-title-1 {
         font-size: 14px;
-        column-gap: 8px;
+    }
+    .mobile-head-title-2 {
+        font-size: 7px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .mobile-head-title-2 {
+        font-size: 6px;
+    }
+}
+@media screen and (max-width: 330px) {
+    .link__logo-name-2 {
+        font-size: 7px;
+    }
+    .mobile-head-title {
+        display: none;
+    }
+    .mobile-menu-title {
+        display: block;
+    }
+    .link__logo-name-1 {
+        font-size: 16px;
     }
 }
 

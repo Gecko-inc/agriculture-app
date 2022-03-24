@@ -32,14 +32,32 @@
             <div class="header_elements-left">
                 <div class="logo">
                     <a class="link__logo-img" href="/">
-                        <img class="dext-logo-img" src="{% static 'logo.svg' %}" alt="logo">
+                        <img class="dext-logo-img" src="{% static 'logo.jpg' %}" alt="logo">
                     </a>
-                    <a class="link__logo-name" href="/">
-                        {% trans 'Сельхозинструмент' %}
+                    <a class="logo-name" href="/">
+                        <div class="link__logo-name link__logo-name-1" >
+                            {% trans 'Сельхозинструмент' %}
+                        </div>
+                        <div class="link__logo-name link__logo-name-2" >
+                            {% trans 'Общество с ограниченной ответственностью' %}
+                        </div>
                     </a>
+
                 </div>
 
 
+            </div>
+
+            <div class="header_elements-right">
+                <a href="tel:{{ cfg.phone }}">
+                    <img src="{% static 'header-phone.svg' %}" alt="phone">
+                </a>
+                <div class="right-block">
+                    <a href="tel:{{ cfg.phone }}">
+                        {{ cfg.phone }}
+                    </a>
+                    <p class="right-block-text">{% trans 'Псков' %}</p>
+                </div>
                 <div class="translation">
                     <div class="select is-active">
                         <div class="translation-language">{{ request.LANGUAGE_CODE }}</div>
@@ -64,39 +82,36 @@
                         </div>
                     </div>
                 </div>
-
-
-            </div>
-
-            <div class="header_elements-right">
-                <a href="tel:{{ cfg.phone }}">
-                    <img src="{% static 'header-phone.svg' %}" alt="phone">
-                </a>
-                <div class="right-block">
-                    <a href="tel:{{ cfg.phone }}">
-                        {{ cfg.phone }}
-                    </a>
-                    <p class="right-block-text">{% trans 'Псков' %}</p>
-                </div>
             </div>
         </div>
 
 
-        <div class="burger-menu">
-            <div id="burger-menu_button" onclick="openMenu()">
-                <span id="burger-menu_line1"></span>
-                <span id="burger-menu_line2"></span>
-                <span id="burger-menu_line3"></span>
-            </div>
-
-            <nav id="burger-menu_nav">
+        <div class="mobile-header-left">
+            <div class="burger-menu">
+                <div id="burger-menu_button" onclick="openMenu()">
+                    <span id="burger-menu_line1"></span>
+                    <span id="burger-menu_line2"></span>
+                    <span id="burger-menu_line3"></span>
+                </div>
+                <nav id="burger-menu_nav">
                 <div class="logo">
+
                     <a class="link__logo-img" href="/">
-                        <img class="mobile-logo-img" src="{% static 'logo.svg' %}" alt="logo">
+                        <img class="mobile-logo-img" src="{% static 'logo.jpg' %}" alt="logo">
                     </a>
-                    <a class="link__logo-name" href="/">
-                        {% trans 'Сельхозинструмент' %}
+
+                    <div class="mobile-menu-title">
+                        <a class="logo-name" href="/">
+                        <div class="link__logo-name link__logo-name-1">
+                            {% trans 'Сельхозинструмент' %}
+                        </div>
+                        <div class="link__logo-name link__logo-name-2" >
+                            {% trans 'Общество с ограниченной ответственностью' %}
+                        </div>
                     </a>
+                    </div>
+
+
                 </div>
 
                 <div>
@@ -139,7 +154,22 @@
                     </div>
                 </div>
             </nav>
+            </div>
+
+        <div class="mobile-head-title">
+            <a class="logo-name" href="/">
+            <div class="link__logo-name mobile-head-title-1">
+                {% trans 'Сельхозинструмент' %}
+            </div>
+            <div class="link__logo-name mobile-head-title-2" >
+                {% trans 'Общество с ограниченной ответственностью' %}
+            </div>
+        </a>
         </div>
+
+
+        </div>
+
 
         <div class="mobile-header-right">
             <div class="translation-mobile">

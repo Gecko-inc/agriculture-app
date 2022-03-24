@@ -44,6 +44,16 @@
         width: 25px;
         height: 20px;
     }
+    .mobile-header-left {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 20px;
+    }
+
+    .mobile-header-logo {
+        display: block;
+    }
 
     .mobile-icon, .translation-mobile {
         display: block;
@@ -114,6 +124,7 @@
         width: auto;
         white-space: normal;
     }
+
     body.active {
         overflow: hidden;
     }
@@ -338,8 +349,15 @@
     }
 }
 
+
 @media screen and (max-width: 260px) {
     .followButton {
         font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 185px) {
+    .mobile-header-logo {
+        display: none;
     }
 }
