@@ -19,6 +19,7 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     url(r'^', include('section.urls', namespace='section')),
+    url(r'^', include('order.urls', namespace='order')),
     url(r'^', include('catalog.urls', namespace='catalog')),
     url(r'^feedback/', include('feedback.urls', namespace='feedback')),
     url(r'^', include('account.urls', namespace='account')),

@@ -37,6 +37,7 @@ class Product(models.Model):
     article = models.CharField(_("Артикул"), max_length=130)
     category = models.ForeignKey(Category, verbose_name=_("Категория"),
                                  related_name='products', on_delete=models.SET_NULL, blank=True, null=True)
+    price = models.FloatField("Цена", default=0.0)
     image = models.ImageField(_("Изображение"), upload_to=get_upload_to)
     description = RichTextUploadingField(_("Описание"), blank=True)
     specifications = RichTextUploadingField(_("Характеристики"), blank=True)

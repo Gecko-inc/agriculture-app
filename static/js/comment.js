@@ -1,4 +1,4 @@
-let CommentFrom = document.getElementById('regForm');
+let CommentFrom = document.getElementById('AddCart');
 
 CommentFrom.onsubmit = async (e) => {
     e.preventDefault();
@@ -7,8 +7,9 @@ CommentFrom.onsubmit = async (e) => {
         method: 'POST',
         body: data
     });
-    CommentFrom.reset();
-    openReviewModal();
+    document.getElementById('AddToCart').innerHTML("<div>Товар добавлен в корзину</div>");
+    // CommentFrom.reset();
+    // openReviewModal();
     // el = document.getElementById('feedback');
     // el.innerHTML = "<b>Спасибо за отзыв</b>"
 

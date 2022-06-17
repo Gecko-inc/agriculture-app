@@ -1,9 +1,10 @@
 var element_1 = document.getElementById('ItemList');
 var element_2 = document.getElementById('CartTotal');
 
-document.addEventListener("click", function (e) {
-    if (e.target.className == "ButtonPlus") {
-        let response = fetch("/ru/cart/edit/", {
+document.querySelector('.ButtonPlus').addEventListener("click", function (e) {
+    console.log(123123)
+    // if (e.target.className == "ButtonPlus") {
+        fetch("/ru/cart/edit/", {
             method: 'POST',
             body: JSON.stringify({"id": e.target.id, "action": "+"})
         })
@@ -19,7 +20,7 @@ document.addEventListener("click", function (e) {
                 element_2.innerHTML = JSON.parse(data).total
             }
         );
-    }
+
 });
 document.addEventListener("click", function (e) {
     if (e.target.className == "basket-title del ButtonDelete") {

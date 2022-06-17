@@ -16,6 +16,7 @@ class UserStatus(models.Model):
 
 class User(AbstractUser, UserManager):
     status = models.ForeignKey(UserStatus, verbose_name=_("Статус"), on_delete=models.SET_NULL, blank=True, null=True)
+    favorite_product = models.ManyToManyField("catalog.Product", verbose_name='Избранное', related_name='favorite')
 
     class Meta:
         verbose_name = _("Пользователь")

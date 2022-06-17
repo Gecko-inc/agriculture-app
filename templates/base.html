@@ -35,10 +35,10 @@
                         <img class="dext-logo-img" src="{% static 'logo.jpg' %}" alt="logo">
                     </a>
                     <a class="logo-name" href="/">
-                        <div class="link__logo-name link__logo-name-1" >
+                        <div class="link__logo-name link__logo-name-1">
                             {% trans 'Сельхозинструмент' %}
                         </div>
-                        <div class="link__logo-name link__logo-name-2" >
+                        <div class="link__logo-name link__logo-name-2">
                             {% trans 'Общество с ограниченной ответственностью' %}
                         </div>
                     </a>
@@ -57,6 +57,16 @@
                         {{ cfg.phone }}
                     </a>
                     <p class="right-block-text">{% trans 'Псков' %}</p>
+                </div>
+                <div class="auth">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'order:cart' %}">{% trans 'Корзина' %}</a>
+                        <br>
+                        <a href="{% url 'logout' %}">{% trans 'Выход' %}</a>
+                    {% else %}
+                        <a href="{% url 'account:login' %}">{% trans 'Вход' %}</a>
+                        <a href="{% url 'account:registration' %}">{% trans 'Регистрация' %}</a>
+                    {% endif %}
                 </div>
                 <div class="translation">
                     <div class="select is-active">
@@ -94,78 +104,78 @@
                     <span id="burger-menu_line3"></span>
                 </div>
                 <nav id="burger-menu_nav">
-                <div class="logo">
+                    <div class="logo">
 
-                    <a class="link__logo-img" href="/">
-                        <img class="mobile-logo-img" src="{% static 'logo.jpg' %}" alt="logo">
-                    </a>
+                        <a class="link__logo-img" href="/">
+                            <img class="mobile-logo-img" src="{% static 'logo.jpg' %}" alt="logo">
+                        </a>
 
-                    <div class="mobile-menu-title">
-                        <a class="logo-name" href="/">
-                        <div class="link__logo-name link__logo-name-1">
-                            {% trans 'Сельхозинструмент' %}
-                        </div>
-                        <div class="link__logo-name link__logo-name-2" >
-                            {% trans 'Общество с ограниченной ответственностью' %}
-                        </div>
-                    </a>
-                    </div>
-
-
-                </div>
-
-                <div>
-                    <div class="asideElement">
-                        <div class="catalog">
-                            <a href="/#catalog" class="aside-link" onclick="closeMenu()">
-                                {% trans 'Каталог' %}
+                        <div class="mobile-menu-title">
+                            <a class="logo-name" href="/">
+                                <div class="link__logo-name link__logo-name-1">
+                                    {% trans 'Сельхозинструмент' %}
+                                </div>
+                                <div class="link__logo-name link__logo-name-2">
+                                    {% trans 'Общество с ограниченной ответственностью' %}
+                                </div>
                             </a>
-                            <img class="catalog-burger-header" src="{% static 'small-arrow.svg' %}" alt="arrow"
-                                 onclick="burgerCatalogSelect()">
                         </div>
-                        <div class="catalog-burger-items">
-                            {% for category in categories %}
-                                <a class="catalog-item"
-                                   href="/?category={{ category.id }}#products">— {{ category.title }}</a>
-                            {% endfor %}
+
+
+                    </div>
+
+                    <div>
+                        <div class="asideElement">
+                            <div class="catalog">
+                                <a href="/#catalog" class="aside-link" onclick="closeMenu()">
+                                    {% trans 'Каталог' %}
+                                </a>
+                                <img class="catalog-burger-header" src="{% static 'small-arrow.svg' %}" alt="arrow"
+                                     onclick="burgerCatalogSelect()">
+                            </div>
+                            <div class="catalog-burger-items">
+                                {% for category in categories %}
+                                    <a class="catalog-item"
+                                       href="/?category={{ category.id }}#products">— {{ category.title }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="asideElement">
+                            <a href="/#cert" class="aside-link" onclick="closeMenu()">
+                                {% trans 'Патенты и лицензии' %}
+                            </a>
+                        </div>
+
+                        <div class="asideElement">
+                            <a href="/#news" class="aside-link" onclick="closeMenu()">
+                                {% trans 'Новости' %}
+                            </a>
+                        </div>
+                        <div class="asideElement">
+                            <a href="/#feedback" class="aside-link" onclick="closeMenu()">
+                                {% trans 'Обратная связь' %}
+                            </a>
+                        </div>
+                        <div class="asideElement last-mobile-asideElement">
+                            <a href="/#contacts" class="aside-link" onclick="closeMenu()">
+                                {% trans 'Контакты' %}
+                            </a>
                         </div>
                     </div>
-
-                    <div class="asideElement">
-                        <a href="/#cert" class="aside-link" onclick="closeMenu()">
-                            {% trans 'Патенты и лицензии' %}
-                        </a>
-                    </div>
-
-                    <div class="asideElement">
-                        <a href="/#news" class="aside-link" onclick="closeMenu()">
-                            {% trans 'Новости' %}
-                        </a>
-                    </div>
-                    <div class="asideElement">
-                        <a href="/#feedback" class="aside-link" onclick="closeMenu()">
-                            {% trans 'Обратная связь' %}
-                        </a>
-                    </div>
-                    <div class="asideElement last-mobile-asideElement">
-                        <a href="/#contacts" class="aside-link" onclick="closeMenu()">
-                            {% trans 'Контакты' %}
-                        </a>
-                    </div>
-                </div>
-            </nav>
+                </nav>
             </div>
 
-        <div class="mobile-head-title">
-            <a class="logo-name" href="/">
-            <div class="link__logo-name mobile-head-title-1">
-                {% trans 'Сельхозинструмент' %}
+            <div class="mobile-head-title">
+                <a class="logo-name" href="/">
+                    <div class="link__logo-name mobile-head-title-1">
+                        {% trans 'Сельхозинструмент' %}
+                    </div>
+                    <div class="link__logo-name mobile-head-title-2">
+                        {% trans 'Общество с ограниченной ответственностью' %}
+                    </div>
+                </a>
             </div>
-            <div class="link__logo-name mobile-head-title-2" >
-                {% trans 'Общество с ограниченной ответственностью' %}
-            </div>
-        </a>
-        </div>
 
 
         </div>
@@ -329,13 +339,14 @@
 
                 <div class="followBlock">
                     <p>{% trans 'Подписаться на новости' %}</p>
-                        <form class="newsFollow" action="{% url 'feedback:SubscribeView' %}" method="post" id="SubscribeView">
-                            {% csrf_token %}
-                            <input type="email" class="followEmail" name="email"
-                                   placeholder="{% trans 'Введите ваш e-mail' %}">
-                            <button type="submit" class="followButton">{% trans 'Подписаться' %}
-                            </button>
-                        </form>
+                    <form class="newsFollow" action="{% url 'feedback:SubscribeView' %}" method="post"
+                          id="SubscribeView">
+                        {% csrf_token %}
+                        <input type="email" class="followEmail" name="email"
+                               placeholder="{% trans 'Введите ваш e-mail' %}">
+                        <button type="submit" class="followButton">{% trans 'Подписаться' %}
+                        </button>
+                    </form>
                 </div>
             </div>
 
@@ -392,13 +403,13 @@
         <div class="footer-mobile">
             <div class="followBlock">
                 <p>{% trans 'Подписаться на новости' %}</p>
-                    <form class="newsFollow" action="{% url 'feedback:SubscribeView' %}" method="post" id="SubscribeView">
-                            {% csrf_token %}
-                        <input type="email" class="followEmail" name="email"
-                               placeholder="{% trans 'Введите ваш e-mail' %}">
-                        <button type="submit" class="followButton">{% trans 'Подписаться' %}
-                        </button>
-                    </form>
+                <form class="newsFollow" action="{% url 'feedback:SubscribeView' %}" method="post" id="SubscribeView">
+                    {% csrf_token %}
+                    <input type="email" class="followEmail" name="email"
+                           placeholder="{% trans 'Введите ваш e-mail' %}">
+                    <button type="submit" class="followButton">{% trans 'Подписаться' %}
+                    </button>
+                </form>
             </div>
             <div class="social_networks">
                 <p>{% trans 'Мы в соцсетях' %}:</p>

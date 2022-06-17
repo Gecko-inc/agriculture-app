@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n static %}
 
-{% block title %} <title>Регистрация</title> {% endblock %}
+{% block title %} {% trans 'Регистрация' %} {% endblock %}
 {% block style %}
     {{ block.super }}
     <link type="text/css" href="{% static 'reg/reg.css' %}" rel="stylesheet">

@@ -25,6 +25,9 @@ class CartView(TemplateView):
             product_id=request.POST.get("product_id"),
             quantity=1,
         )
+        return JsonResponse({
+            'msg': 'Ok'
+        })
 
     @classmethod
     def delete_item(cls, request):
@@ -99,4 +102,8 @@ class OrderView(TemplateView):
             )
 
         cart.delete()
+
+        return JsonResponse({
+            'msg': 'ok'
+        })
 

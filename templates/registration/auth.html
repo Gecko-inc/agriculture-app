@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static i18n %}
-{% block title %}<title>Вход</title>{% endblock %}
+{% block title %}{% trans 'Вход' %}{% endblock %}
 {% block style %}
     {{ block.super }}
     <link type="text/css" href="{% static 'auth/auth.css' %}" rel="stylesheet">

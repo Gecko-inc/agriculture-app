@@ -10,14 +10,20 @@
 {% endblock %}
 {% block content %}
     <div class="bread-crumbs">
-        <a href="/?category={{ product.category.id }}#products" class="bread-crumb-link">
+        <a href="/#catalog" class="bread-crumb-link">
             {% trans 'Каталог' %}
         </a>
         <p>
             /
         </p>
+        <a href="/?category={{ product.category.id }}#products" class="bread-crumb-link">
+            {{ product.category }}
+        </a>
+        <p>
+            /
+        </p>
         <a href="" class="bread-crumb-link">
-            {% trans 'Лопаты' %}
+            {{ product.title }}
         </a>
     </div>
 
@@ -75,6 +81,15 @@
             <p class="porod-numb">
                 <span style="color: #4FAE3C;"> {% trans 'Самовывоз' %}:</span> {{ cfg.address }} {% trans 'в магазине selhozinstrument сегодня, бесплатно' %}
             </p>
+            {% if request.user.is_authenticated %}
+                <div id="AddToCart">
+                    <form action="{% url 'order:add_item' %}" id="AddCart">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ product.id }}" name="product_id">
+                        <button type="submit" class="addToBasket">{% trans 'Добавить в корзину' %}</button>
+                    </form>
+                </div>
+            {% endif %}
             {% if product.file %}
                 <div class="porod-numb certif">
                     <img src="{% static 'product/download.svg' %}">
@@ -560,7 +575,7 @@
             });
         }
     </script>
-    {#    <script src="{% static 'js/comment.js' %}"></script>#}
+    <script src="{% static 'js/comment.js' %}"></script>
     <script src="{% static 'js/product.js' %}"></script>
     <script src="{% static 'rating.js' %}"></script>
     <script src="{% static 'index.js' %}"></script>
