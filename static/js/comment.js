@@ -7,7 +7,7 @@ CommentFrom.onsubmit = async (e) => {
         method: 'POST',
         body: data
     });
-    document.getElementById('AddToCart').innerHTML("<div>Товар добавлен в корзину</div>");
+    document.getElementById('AddToCart').innerHTML = "<div>Товар добавлен в корзину</div>";
     // CommentFrom.reset();
     // openReviewModal();
     // el = document.getElementById('feedback');
